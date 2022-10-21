@@ -278,8 +278,8 @@ const NAV_ITEMS = [
     href: '#',
   },
   {
-    label: 'Contact',
-    href: '#contact',
+    label: 'Socials',
+    href: '#socials',
   },
   {
     label: 'Skills',
@@ -287,6 +287,6 @@ const NAV_ITEMS = [
   },
   {
     label: 'Projects',
-    href: '#Projects',
+    href: '#projects',
   },
 ];
