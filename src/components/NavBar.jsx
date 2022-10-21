@@ -258,23 +258,35 @@ const MobileNavItem = ({ label, children, href }) => {
 };
 
 const NAV_ITEMS = [
+  // {
+  //   label: 'Introduction',
+  //   children: [
+  //     {
+  //       label: 'Label 1',
+  //       subLabel: 'This is label 1',
+  //       href: '#',
+  //     },
+  //     {
+  //       label: 'Label 2',
+  //       subLabel: 'This is label 2',
+  //       href: '#',
+  //     },
+  //   ],
+  // },
   {
-    label: 'Title 1',
-    children: [
-      {
-        label: 'Label 1',
-        subLabel: 'This is label 1',
-        href: '#',
-      },
-      {
-        label: 'Label 2',
-        subLabel: 'This is label 2',
-        href: '#',
-      },
-    ],
+    label: 'Introduction',
+    href: '#',
   },
   {
-    label: 'Title 3',
-    href: '#',
+    label: 'Contact',
+    href: '#contact',
+  },
+  {
+    label: 'Skills',
+    href: '#skills',
+  },
+  {
+    label: 'Projects',
+    href: '#Projects',
   },
 ];
