@@ -9,6 +9,9 @@ import {
   InputLeftAddon,
   Select,
   Heading,
+  CheckboxGroup,
+  Stack,
+  Checkbox,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
@@ -25,18 +28,22 @@ const Form = () => (
       maxW={'80%'}>
       <Heading>Introduction</Heading>
       <Grid templateColumns='repeat(5, 1fr)' gap={1}>
-        <Text width='20vh'>My name is: </Text>
+        <Text fontWeight={'bold'} width='20vh'>
+          My name is:{' '}
+        </Text>
         <Input placeholder='Peter Parker' />
       </Grid>
       <Grid templateColumns='repeat(5, 1fr)' gap={1}>
-        <Text width='20vh'>Positions</Text>
+        <Text fontWeight={'bold'} width='20vh'>
+          Positions
+        </Text>
         <Input placeholder='Position 1' />
         <Input placeholder='Position 2' />
         <Input placeholder='Position 3' />
         <Input placeholder='Position 4' />
       </Grid>
       <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-        <Text p='10px' width='20vh'>
+        <Text fontWeight={'bold'} width='20vh'>
           Bio:{' '}
         </Text>
         <Input
@@ -47,7 +54,9 @@ const Form = () => (
         />
       </Grid>
       <Grid templateColumns='repeat(1 1fr)' gap={2}>
-        <Text width='20vh'>Description: </Text>
+        <Text fontWeight={'bold'} width='20vh'>
+          Description:{' '}
+        </Text>
         <Textarea
           size='md'
           placeholder='Lorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsun'
@@ -55,7 +64,7 @@ const Form = () => (
           minHeight='16vh'
         />
         <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-          <Text p='10px' width='20vh'>
+          <Text fontWeight={'bold'} width='20vh'>
             Image Link:{' '}
           </Text>
           <Input
@@ -65,6 +74,30 @@ const Form = () => (
             display='block'
           />
         </Grid>
+      </Grid>
+
+      <Grid templateColumns='repeat(1 1fr)' gap={2}>
+        <Text fontWeight={'bold'} width='26vh'>
+          Skills:
+        </Text>
+        <CheckboxGroup colorScheme='green' defaultValue={['HTML', 'CSS']}>
+          <Grid templateColumns='repeat(2, 1fr)' gap={2} width='64vh'>
+            <Checkbox value='AdobeXd'>AdobeXd</Checkbox>
+            <Checkbox value='AfterEffects'>AfterEffects</Checkbox>
+            <Checkbox value='Bootstrap'>Bootstrap</Checkbox>
+            <Checkbox value='Css'>Css</Checkbox>
+            <Checkbox value='HTML'>HTML</Checkbox>
+            <Checkbox value='Figma'>Figma</Checkbox>
+            <Checkbox value='Firebase'>Firebase</Checkbox>
+            <Checkbox value='Illustrator'>Illustrator</Checkbox>
+            <Checkbox value='Javascript'>Javascript</Checkbox>
+            <Checkbox value='ReactJs'>ReactJs</Checkbox>
+            <Checkbox value='NextJs'>NextJs</Checkbox>
+            <Checkbox value='NodeJs'>NodeJs</Checkbox>
+            <Checkbox value='Sass'>Sass</Checkbox>
+            <Checkbox value='Tailwind'>Tailwind</Checkbox>
+          </Grid>
+        </CheckboxGroup>
       </Grid>
     </Grid>
     <Grid
@@ -79,7 +112,7 @@ const Form = () => (
       <Heading>Socials</Heading>
 
       <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-        <Text p='10px' width='20vh'>
+        <Text fontWeight={'bold'} width='20vh'>
           Email:{' '}
         </Text>
         <Input
@@ -90,7 +123,7 @@ const Form = () => (
         />
       </Grid>
       <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-        <Text p='10px' width='20vh'>
+        <Text fontWeight={'bold'} width='20vh'>
           Github:{' '}
         </Text>
         <InputGroup width='64vh'>
@@ -99,7 +132,7 @@ const Form = () => (
         </InputGroup>
       </Grid>
       <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-        <Text p='10px' width='20vh'>
+        <Text fontWeight={'bold'} width='20vh'>
           LinkedIn:{' '}
         </Text>
         <InputGroup width='64vh'>
@@ -108,7 +141,7 @@ const Form = () => (
         </InputGroup>
       </Grid>
       <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-        <Text p='10px' width='20vh'>
+        <Text fontWeight={'bold'} width='20vh'>
           Twitter:{' '}
         </Text>
         <InputGroup width='64vh'>
@@ -131,52 +164,58 @@ const Form = () => (
           gap={4}
           width='96vh'
           justifySelf={'center'}>
-          <Heading size={'1xl'} width='32vh'>
+          <Text fontSize={'2xl'} fontWeight={'extrabold'} width='32vh'>
             Project 1:{' '}
-          </Heading>
+          </Text>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Project Title:{' '}
             </Text>
             <Input placeholder='Notes' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Project Description:{' '}
             </Text>
             <Textarea placeholder='Lorem ispsum' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Demo Link:{' '}
             </Text>
             <Input placeholder='demoNotes.com' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Image Link:{' '}
             </Text>
             <Input placeholder='NotesImage.jpg' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Technologies:{' '}
             </Text>
-            <Select
-              icon={<ChevronDownIcon />}
-              width={'36%'}
-              variant='outline'
-              size='md'>
-              <option selected hidden disabled value=''>
-                Select Technologies
-              </option>
-
-              <option value='HTML'>HTML</option>
-              <option value='CSS'>CSS</option>
-            </Select>
+            <CheckboxGroup colorScheme='green' defaultValue={['HTML', 'CSS']}>
+              <Grid templateColumns='repeat(2, 1fr)' gap={2} width='64vh'>
+                <Checkbox value='AdobeXd'>AdobeXd</Checkbox>
+                <Checkbox value='AfterEffects'>AfterEffects</Checkbox>
+                <Checkbox value='Bootstrap'>Bootstrap</Checkbox>
+                <Checkbox value='Css'>Css</Checkbox>
+                <Checkbox value='HTML'>HTML</Checkbox>
+                <Checkbox value='Figma'>Figma</Checkbox>
+                <Checkbox value='Firebase'>Firebase</Checkbox>
+                <Checkbox value='Illustrator'>Illustrator</Checkbox>
+                <Checkbox value='Javascript'>Javascript</Checkbox>
+                <Checkbox value='ReactJs'>ReactJs</Checkbox>
+                <Checkbox value='NextJs'>NextJs</Checkbox>
+                <Checkbox value='NodeJs'>NodeJs</Checkbox>
+                <Checkbox value='Sass'>Sass</Checkbox>
+                <Checkbox value='Tailwind'>Tailwind</Checkbox>
+              </Grid>
+            </CheckboxGroup>
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Status:{' '}
             </Text>
             <Select
@@ -197,52 +236,58 @@ const Form = () => (
           gap={4}
           width='96vh'
           justifySelf={'center'}>
-          <Heading size={'1xl'} width='32vh'>
+          <Text fontSize={'2xl'} fontWeight={'extrabold'} width='32vh'>
             Project 2:{' '}
-          </Heading>
+          </Text>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Project Title:{' '}
             </Text>
             <Input placeholder='Notes' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Project Description:{' '}
             </Text>
             <Textarea placeholder='Lorem ispsum' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Demo Link:{' '}
             </Text>
             <Input placeholder='demoNotes.com' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Image Link:{' '}
             </Text>
             <Input placeholder='NotesImage.jpg' width='64vh' />
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Technologies:{' '}
             </Text>
-            <Select
-              icon={<ChevronDownIcon />}
-              width={'36%'}
-              variant='outline'
-              size='md'>
-              <option selected hidden disabled value=''>
-                Select Technologies
-              </option>
-
-              <option value='HTML'>HTML</option>
-              <option value='CSS'>CSS</option>
-            </Select>
+            <CheckboxGroup colorScheme='green' defaultValue={['HTML', 'CSS']}>
+              <Grid templateColumns='repeat(2, 1fr)' gap={2} width='64vh'>
+                <Checkbox value='AdobeXd'>AdobeXd</Checkbox>
+                <Checkbox value='AfterEffects'>AfterEffects</Checkbox>
+                <Checkbox value='Bootstrap'>Bootstrap</Checkbox>
+                <Checkbox value='Css'>Css</Checkbox>
+                <Checkbox value='HTML'>HTML</Checkbox>
+                <Checkbox value='Figma'>Figma</Checkbox>
+                <Checkbox value='Firebase'>Firebase</Checkbox>
+                <Checkbox value='Illustrator'>Illustrator</Checkbox>
+                <Checkbox value='Javascript'>Javascript</Checkbox>
+                <Checkbox value='ReactJs'>ReactJs</Checkbox>
+                <Checkbox value='NextJs'>NextJs</Checkbox>
+                <Checkbox value='NodeJs'>NodeJs</Checkbox>
+                <Checkbox value='Sass'>Sass</Checkbox>
+                <Checkbox value='Tailwind'>Tailwind</Checkbox>
+              </Grid>
+            </CheckboxGroup>
           </InputGroup>
           <InputGroup width='90vh'>
-            <Text display='block' width='26vh'>
+            <Text fontWeight={'bold'} display='block' width='26vh'>
               Status:{' '}
             </Text>
             <Select
