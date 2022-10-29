@@ -1,23 +1,13 @@
 import React from "react";
 import {
-  ChakraProvider,
   Text,
   Input,
   Grid,
   Textarea,
   InputGroup,
-  InputLeftAddon,
-  Heading,
-  CheckboxGroup,
-  Stack,
-  Checkbox,
   FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Button,
 } from "@chakra-ui/react";
 import { Select, CreatableSelect } from "chakra-react-select";
-import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 const Project = ({ register, errors, technologies, control, id }) => {

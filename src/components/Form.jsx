@@ -1,7 +1,5 @@
 import React from "react";
 import Project from "./Project";
-
-import { HexColorPicker } from "react-colorful";
 import {
   ChakraProvider,
   Text,
@@ -11,11 +9,7 @@ import {
   InputGroup,
   InputLeftAddon,
   Heading,
-  CheckboxGroup,
-  Stack,
-  Checkbox,
   FormControl,
-  FormLabel,
   FormErrorMessage,
   Button,
 } from "@chakra-ui/react";
@@ -33,11 +27,11 @@ const Form = () => {
     a: "1",
   });
   // destructuring rgba from state
-  const { r, g, b, a } = sketchPickerColor;
+  // const { r, g, b, a } = sketchPickerColor;
 
   //creating state to store our color and also set color using onChange event for block picker
 
-  const [color, setColor] = useState("#aabbcc");
+  // const [color, setColor] = useState("#aabbcc");
   const [projectArray, setProjectArray] = useState([
     {
       title: "",
