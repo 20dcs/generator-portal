@@ -1,4 +1,6 @@
 import React from 'react';
+import { SketchPicker } from 'react-color'
+import { HexColorPicker } from "react-colorful";
 import {
   ChakraProvider,
   Text,
@@ -17,10 +19,11 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { Select, CreatableSelect } from 'chakra-react-select';
-
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 const Form = () => {
+  const [color, setColor] = useState("#aabbcc");
   let technologies = [
     {
       label: 'Technologies',
@@ -136,6 +139,7 @@ const Form = () => {
   return (
     <ChakraProvider resetCSS>
       <form onSubmit={handleSubmit(onSubmit)}>
+      
         <FormControl isInvalid={errors}>
           <Grid
             className={'Form'}
@@ -148,6 +152,11 @@ const Form = () => {
             maxW={'80%'}>
             <Heading>Introduction</Heading>
             <Grid templateColumns='repeat(5, 1fr)' gap={1}>
+            <Text fontWeight={'bold'} width='20vh'>
+                Choose theme color:{' '}
+            </Text>
+            {/* Color picker*/ }
+            <HexColorPicker color={color} onChange={setColor} />
               <Text fontWeight={'bold'} width='20vh'>
                 My name is:{' '}
               </Text>
