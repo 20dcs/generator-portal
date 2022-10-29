@@ -1,6 +1,6 @@
 import React from 'react';
-import { SketchPicker } from 'react-color'
-import { HexColorPicker } from "react-colorful";
+// import { SketchPicker } from 'react-color';
+import { HexColorPicker } from 'react-colorful';
 import {
   ChakraProvider,
   Text,
@@ -10,31 +10,27 @@ import {
   InputGroup,
   InputLeftAddon,
   Heading,
-  CheckboxGroup,
-  Stack,
-  Checkbox,
   FormControl,
-  FormLabel,
   FormErrorMessage,
   Button,
 } from '@chakra-ui/react';
-import { Select, CreatableSelect } from 'chakra-react-select';
+import {  CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Project from './Project';
 
 const Form = () => {
-  const [color, setColor] = useState("#aabbcc");
-  const [projectArray,setProject]= useState([
-          {
-          title: 'Reports',
-          ImageLink: '',
-          Status:'Completed',
-          ProjectName:'Reports',
-          Technologies: ['HTML', 'TAILWIND', 'REACT', 'NEXT'],
-          Description:
-            'Write reports for your students in 60 seconds or less',
-          DemoLink: '',}
+  const [color, setColor] = useState('#aabbcc');
+  const [projectArray, setProject] = useState([
+    {
+      title: 'Reports',
+      ImageLink: '',
+      Status: 'Completed',
+      ProjectName: 'Reports',
+      Technologies: ['HTML', 'TAILWIND', 'REACT', 'NEXT'],
+      Description: 'Write reports for your students in 60 seconds or less',
+      DemoLink: '',
+    },
   ]);
   let technologies = [
     {
@@ -76,8 +72,8 @@ const Form = () => {
     },
   });
 
-  function onSubmit(values) {
-    console.log(values);
+  async function onSubmit(values) {
+    // console.log(values);
     let data = {
       Color: '#00FFFF',
       Head: {
@@ -145,13 +141,32 @@ const Form = () => {
       values.skills.forEach((s) => tempArray.push(s.value));
       data.Skills = tempArray;
     }
-    console.log(data);
+    console.log('data 148:   ', data);
+
+    // When a post request is sent to the create url, we'll add a new users to the database.
+
+    const newPerson = { userName: values.name, data: values };
+    // {
+    //     "userName": "John doe",
+    //     "data": " {     \"Color\": \"#00FFFF\",     \"Head\": {         \"title\": \"Kartik\",         \"NavbarName\": \"Kartik\"     },     \"HomePage\": {         \"name\": \"Kartik\",         \"Position\": [             \"Position 1\",             \"Position 2\",             \"Position 3\",             \"Position 4\"         ],         \"description\": \"kjbkjb jkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj \"     },     \"AboutPage\": {         \"AboutParagraph\": \"jkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj b\",         \"ImageLink\": \"https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp\"     },     \"Skills\": [         \"Javascript\",         \"ReactJs\",         \"NextJs\",         \"NodeJs\",         \"j\",         \"AdobeXd\",         \"AfterEffects\",         \"Bootstrap\",         \"kjbkjbk\"     ],     \"Projects\": [         {             \"title\": \"kjb\",             \"ImageLink\": \"nl\",             \"Status\": \"Kartik\",             \"ProjectName\": \"Kartik\",             \"Technologies\": [                 \"HTML\",                 \"TAILWIND\",                 \"REACT\",                 \"NEXT\"             ],             \"Description\": \"jn\",             \"DemoLink\": \"jl\"         },         {             \"title\": \"TruthTable Generator\",             \"ImageLink\": \"https://user-images.githubusercontent.com/36930635/141287110-ce711d51-f9ca-42fd-8a25-f8e037d3c41b.png\",             \"Status\": \"Completed\",             \"ProjectName\": \"ColorHub\",             \"Technologies\": [                 \"HTML\",                 \"TAILWIND\",                 \"REACT\",                 \"NEXT\"             ],             \"Description\": \"A responsive Web application which generates Truth table of Boolean expressions.\",             \"DemoLink\": \"\"         },         {             \"title\": \"Meme Generator\",             \"ImageLink\": \"\",             \"Status\": \"Working On it\",             \"ProjectName\": \"ColorHub\",             \"Technologies\": [                 \"HTML\",                 \"REACT\",                 \"NEXT\"             ],             \"Description\": \"Guide\",             \"DemoLink\": \"\"         }     ],     \"Contact\": {         \"Email\": \"hb\",         \"Github\": \"kjb\",         \"Twitter\": \"jbkjb\",         \"linkedIn\": \"https://linkedin.com/\"     } }"
+    // }
+
+    console.log('newPerson', newPerson);
+    await fetch('http://localhost:5000/users/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPerson),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
   }
 
   return (
     <ChakraProvider resetCSS>
       <form onSubmit={handleSubmit(onSubmit)}>
-      
         <FormControl isInvalid={errors}>
           <Grid
             className={'Form'}
@@ -164,11 +179,11 @@ const Form = () => {
             maxW={'80%'}>
             <Heading>Introduction</Heading>
             <Grid templateColumns='repeat(5, 1fr)' gap={1}>
-            <Text fontWeight={'bold'} width='20vh'>
+              <Text fontWeight={'bold'} width='20vh'>
                 Choose theme color:{' '}
-            </Text>
-            {/* Color picker*/ }
-            <HexColorPicker color={color} onChange={setColor} />
+              </Text>
+              {/* Color picker*/}
+              <HexColorPicker color={color} onChange={setColor} />
               <Text fontWeight={'bold'} width='20vh'>
                 My name is:{' '}
               </Text>
@@ -419,9 +434,19 @@ const Form = () => {
               <Heading>Projects</Heading>
 
               {/* Project1 */}
-              <Project register={register} errors={errors} control={control} technologies={technologies}/>
+              <Project
+                register={register}
+                errors={errors}
+                control={control}
+                technologies={technologies}
+              />
               {/* Project2 */}
-              <Project register={register} errors={errors} control={control} technologies={technologies}/>
+              <Project
+                register={register}
+                errors={errors}
+                control={control}
+                technologies={technologies}
+              />
             </Grid>
             <Button
               bgColor={'#000000'}
