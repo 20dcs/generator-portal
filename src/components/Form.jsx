@@ -1,6 +1,7 @@
+/* eslint-disable array-callback-return */
 import React from 'react';
-// import { SketchPicker } from 'react-color';
-import { HexColorPicker } from 'react-colorful';
+import Project from './Project';
+
 import {
   ChakraProvider,
   Text,
@@ -14,24 +15,19 @@ import {
   FormErrorMessage,
   Button,
 } from '@chakra-ui/react';
-import {  CreatableSelect } from 'chakra-react-select';
+import { CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import Project from './Project';
+
+import { ChromePicker } from 'react-color';
 
 const Form = () => {
-  const [color, setColor] = useState('#aabbcc');
-  const [projectArray, setProject] = useState([
-    {
-      title: 'Reports',
-      ImageLink: '',
-      Status: 'Completed',
-      ProjectName: 'Reports',
-      Technologies: ['HTML', 'TAILWIND', 'REACT', 'NEXT'],
-      Description: 'Write reports for your students in 60 seconds or less',
-      DemoLink: '',
-    },
-  ]);
+  const [colorPicker, setColorPicker] = useState({
+    background: '#FF5733',
+  });
+
+  const [numberOfProjects, setNumberOfProjects] = useState(1);
+
   let technologies = [
     {
       label: 'Technologies',
@@ -50,12 +46,6 @@ const Form = () => {
         { value: 'NodeJs', label: 'NodeJs' },
         { value: 'Sass', label: 'Sass' },
         { value: 'Tailwind', label: 'Tailwind' },
-        //   { value: 'blue', label: 'Blue', color: '#0052CC' },
-        //   { value: 'purple', label: 'Purple', color: '#5243AA' },
-        //   { value: 'red', label: 'Red', color: '#FF5630' },
-        //   { value: 'orange', label: 'Orange', color: '#FF8B00' },
-        //   { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-        //   { value: 'green', label: 'Green', color: '#36B37E' },
       ],
     },
   ];
@@ -67,15 +57,17 @@ const Form = () => {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      name: 'Kartik',
-      // position1: 'Web Developer',
+      name: 'Spiderman',
     },
   });
 
+  function handleAdd() {
+    setNumberOfProjects(numberOfProjects + 1);
+  }
   async function onSubmit(values) {
-    // console.log(values);
+    console.log(values);
     let data = {
-      Color: '#00FFFF',
+      Color: colorPicker.background ?? '#00FFFF',
       Head: {
         title: values?.name ?? 'Jhon Doe | Frontend Developer & Designer',
         NavbarName: values?.name ?? 'Jhon Doe',
@@ -107,26 +99,6 @@ const Form = () => {
             'Write reports for your students in 60 seconds or less',
           DemoLink: values?.projectLink1 ?? '',
         },
-        {
-          title: 'TruthTable Generator',
-          ImageLink:
-            'https://user-images.githubusercontent.com/36930635/141287110-ce711d51-f9ca-42fd-8a25-f8e037d3c41b.png',
-          Status: 'Completed',
-          ProjectName: 'ColorHub',
-          Technologies: ['HTML', 'TAILWIND', 'REACT', 'NEXT'],
-          Description:
-            'A responsive Web application which generates Truth table of Boolean expressions.',
-          DemoLink: '',
-        },
-        {
-          title: 'Meme Generator',
-          ImageLink: '',
-          Status: 'Working On it',
-          ProjectName: 'ColorHub',
-          Technologies: ['HTML', 'REACT', 'NEXT'],
-          Description: 'Guide',
-          DemoLink: '',
-        },
       ],
       Contact: {
         Email: values?.email ?? 'johndoe@gmail.com',
@@ -141,15 +113,32 @@ const Form = () => {
       values.skills.forEach((s) => tempArray.push(s.value));
       data.Skills = tempArray;
     }
-    console.log('data 148:   ', data);
 
-    // When a post request is sent to the create url, we'll add a new users to the database.
+    if (numberOfProjects > 1) {
+      let tempArray = [];
+
+      [...Array(numberOfProjects)].map((e, index) => {
+        let proj = {
+          title: values[`projectTitle${index}`] ?? 'Reports',
+          ImageLink: values[`projectImgLink${index}`] ?? '',
+          Status: values[`projectStatus${index}`].value ?? 'Completed',
+          ProjectName: values[`projectTitle${index}`] ?? 'Reports',
+          Technologies: [],
+          Description:
+            values[`projectDescription${index}`] ??
+            'Write reports for your students in 60 seconds or less',
+          DemoLink: values[`projectLink${index}`] ?? '',
+        };
+        let tempTechArray = [];
+        values[`project${index}`].forEach((s) => tempTechArray.push(s.value));
+        proj.Technologies = tempTechArray;
+        tempArray.push(proj);
+      });
+      data.Projects = tempArray;
+    }
+    console.log(data);
 
     const newPerson = { userName: values.name, data: values };
-    // {
-    //     "userName": "John doe",
-    //     "data": " {     \"Color\": \"#00FFFF\",     \"Head\": {         \"title\": \"Kartik\",         \"NavbarName\": \"Kartik\"     },     \"HomePage\": {         \"name\": \"Kartik\",         \"Position\": [             \"Position 1\",             \"Position 2\",             \"Position 3\",             \"Position 4\"         ],         \"description\": \"kjbkjb jkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj \"     },     \"AboutPage\": {         \"AboutParagraph\": \"jkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj bjkjb jkb kjb kjb kjb kj bkj bkj bkj bkjbkj bkj bkj bkj bkj bk jb kjbkj b kjbkj bk jbk bkj b kbkjb kjb kj b\",         \"ImageLink\": \"https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp\"     },     \"Skills\": [         \"Javascript\",         \"ReactJs\",         \"NextJs\",         \"NodeJs\",         \"j\",         \"AdobeXd\",         \"AfterEffects\",         \"Bootstrap\",         \"kjbkjbk\"     ],     \"Projects\": [         {             \"title\": \"kjb\",             \"ImageLink\": \"nl\",             \"Status\": \"Kartik\",             \"ProjectName\": \"Kartik\",             \"Technologies\": [                 \"HTML\",                 \"TAILWIND\",                 \"REACT\",                 \"NEXT\"             ],             \"Description\": \"jn\",             \"DemoLink\": \"jl\"         },         {             \"title\": \"TruthTable Generator\",             \"ImageLink\": \"https://user-images.githubusercontent.com/36930635/141287110-ce711d51-f9ca-42fd-8a25-f8e037d3c41b.png\",             \"Status\": \"Completed\",             \"ProjectName\": \"ColorHub\",             \"Technologies\": [                 \"HTML\",                 \"TAILWIND\",                 \"REACT\",                 \"NEXT\"             ],             \"Description\": \"A responsive Web application which generates Truth table of Boolean expressions.\",             \"DemoLink\": \"\"         },         {             \"title\": \"Meme Generator\",             \"ImageLink\": \"\",             \"Status\": \"Working On it\",             \"ProjectName\": \"ColorHub\",             \"Technologies\": [                 \"HTML\",                 \"REACT\",                 \"NEXT\"             ],             \"Description\": \"Guide\",             \"DemoLink\": \"\"         }     ],     \"Contact\": {         \"Email\": \"hb\",         \"Github\": \"kjb\",         \"Twitter\": \"jbkjb\",         \"linkedIn\": \"https://linkedin.com/\"     } }"
-    // }
 
     console.log('newPerson', newPerson);
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
@@ -162,8 +151,9 @@ const Form = () => {
       window.alert(error);
       return;
     });
+
+    console.log('env test', `${process.env.REACT_APP_BACKEND_URL}/users/add`);
   }
-  console.log('env test', `${process.env.REACT_APP_BACKEND_URL}/users/add`);
   return (
     <ChakraProvider resetCSS>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -179,11 +169,27 @@ const Form = () => {
             maxW={'80%'}>
             <Heading>Introduction</Heading>
             <Grid templateColumns='repeat(5, 1fr)' gap={1}>
-              <Text fontWeight={'bold'} width='20vh'>
-                Choose theme color:{' '}
-              </Text>
-              {/* Color picker*/}
-              <HexColorPicker color={color} onChange={setColor} />
+              <div
+                className='App'
+                style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <div>
+                  <Text fontWeight={'bold'} width='20vh'>
+                    Choose any color:
+                  </Text>
+                  <div className='sketchpicker'>
+                    <ChromePicker
+                      id='color'
+                      name='color'
+                      onChange={({ hex }) => {
+                        setColorPicker({ background: hex });
+                      }}
+                      color={colorPicker.background}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Grid>
+            <Grid templateColumns='repeat(5, 1fr)' gap={1}>
               <Text fontWeight={'bold'} width='20vh'>
                 My name is:{' '}
               </Text>
@@ -273,7 +279,7 @@ const Form = () => {
                 isInvalid={errors?.description ? true : false}
                 size='md'
                 placeholder='Lorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsun'
-                minWidth='80vh'
+                minWidth='30vh'
                 minHeight='16vh'
               />
               <Grid templateColumns='repeat(5, 1fr)' gap={14}>
@@ -299,26 +305,10 @@ const Form = () => {
               <Text fontWeight={'bold'} width='20vh'>
                 Skills:
               </Text>
-              {/* <CheckboxGroup colorScheme='green' defaultValue={['HTML', 'CSS']}>
-            <Grid templateColumns='repeat(2, 1fr)' gap={2} width='64vh'>
-              <Checkbox value='AdobeXd'>AdobeXd</Checkbox>
-              <Checkbox value='AfterEffects'>AfterEffects</Checkbox>
-              <Checkbox value='Bootstrap'>Bootstrap</Checkbox>
-              <Checkbox value='Css'>Css</Checkbox>
-              <Checkbox value='HTML'>HTML</Checkbox>
-              <Checkbox value='Figma'>Figma</Checkbox>
-              <Checkbox value='Firebase'>Firebase</Checkbox>
-              <Checkbox value='Illustrator'>Illustrator</Checkbox>
-              <Checkbox value='Javascript'>Javascript</Checkbox>
-              <Checkbox value='ReactJs'>ReactJs</Checkbox>
-              <Checkbox value='NextJs'>NextJs</Checkbox>
-              <Checkbox value='NodeJs'>NodeJs</Checkbox>
-              <Checkbox value='Sass'>Sass</Checkbox>
-              <Checkbox value='Tailwind'>Tailwind</Checkbox>
-            </Grid>
-          </CheckboxGroup> */}
+
               <Controller
                 control={control}
+                id='skills'
                 name='skills'
                 rules={{ required: 'Please enter at least one food group.' }}
                 render={({
@@ -433,29 +423,45 @@ const Form = () => {
               display='grid'>
               <Heading>Projects</Heading>
 
-              {/* Project1 */}
-              <Project
-                register={register}
-                errors={errors}
-                control={control}
-                technologies={technologies}
-              />
-              {/* Project2 */}
-              <Project
-                register={register}
-                errors={errors}
-                control={control}
-                technologies={technologies}
-              />
+              {
+                // Looping same component numberOfProjects times
+                [...Array(numberOfProjects)].map((e, index) => (
+                  <Project
+                    key={index}
+                    register={register}
+                    errors={errors}
+                    control={control}
+                    technologies={technologies}
+                    id={index}
+                  />
+                ))
+              }
+              <Button
+                width={200}
+                marginX={'auto'}
+                marginTop={-30}
+                bgColor={'#1A202C'}
+                color={'#EDF2F7'}
+                borderRadius={'6px'}
+                _hover={{
+                  color: '#1A202C',
+                  bgColor: '#A0AEC0',
+                }}
+                onClick={() => handleAdd()}>
+                Add
+              </Button>
             </Grid>
             <Button
-              bgColor={'#000000'}
-              color={'gray.100'}
+              width={200}
+              marginLeft={210}
+              marginTop={-30}
+              bgColor={'#0A7CC9'}
+              color={'white'}
               isLoading={isSubmitting}
               borderRadius={'6px'}
               _hover={{
                 color: '#000000',
-                bgColor: 'gray.100',
+                bgColor: '#5DB7F4',
               }}
               type='submit'>
               Submit
