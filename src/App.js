@@ -1,5 +1,4 @@
 
-import Contact from './components/Contact';
 import Navbar from './components/NavBar';
 import Form from "./components/Form";
 function App() {

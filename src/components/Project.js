@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Text,
   Input,
@@ -6,96 +6,94 @@ import {
   Textarea,
   InputGroup,
   FormControl,
-} from "@chakra-ui/react";
-import { Select, CreatableSelect } from "chakra-react-select";
-import { useForm, Controller } from "react-hook-form";
+} from '@chakra-ui/react';
+import { Select, CreatableSelect } from 'chakra-react-select';
+import { Controller } from 'react-hook-form';
 
 const Project = ({ register, errors, technologies, control, id }) => {
-  console.log(errors);
   return (
     <>
       <Grid
-        templateColumns="repeat(1, 1fr)"
+        templateColumns='repeat(1, 1fr)'
         gap={4}
-        width="96vh"
-        justifySelf={"center"}
-      >
-        <Text fontSize={"2xl"} fontWeight={"extrabold"} width="32vh">
-          {`Project ${id + 1}`}:{" "}
+        width='96vh'
+        justifySelf={'center'}>
+        <Text fontSize={'2xl'} fontWeight={'extrabold'} width='32vh'>
+          {`Project ${id + 1}`}:{' '}
         </Text>
-        <InputGroup width="90vh">
-          <Text fontWeight={"bold"} display="block" width="26vh">
-            Project Title:{" "}
+        <InputGroup width='90vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh'>
+            Project Title:{' '}
           </Text>
           <Input
             id={`projectTitle${id}`}
             name={`projectTitle${id}`}
             {...register(`projectTitle${id}`, {
-              required: "This is required",
+              required: 'This is required',
             })}
             isInvalid={errors[`projectTitle${id}`] ? true : false}
-            placeholder="Notes"
-            width="64vh"
+            placeholder='Notes'
+            width='64vh'
           />
         </InputGroup>
-        <InputGroup width="90vh">
-          <Text fontWeight={"bold"} display="block" width="26vh">
-            Project Description:{" "}
+        <InputGroup width='90vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh'>
+            Project Description:{' '}
           </Text>
           <Textarea
             id={`projectDescription${id}`}
             name={`projectDescription${id}`}
             {...register(`projectDescription${id}`, {
-              required: "This is required",
+              required: 'This is required',
             })}
             isInvalid={errors[`projectDescription${id}`] ? true : false}
-            placeholder="Lorem ispsum"
-            width="64vh"
+            placeholder='Lorem ispsum'
+            width='64vh'
           />
         </InputGroup>
-        <InputGroup width="90vh">
-          <Text fontWeight={"bold"} display="block" width="26vh">
-            Demo Link:{" "}
+        <InputGroup width='90vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh'>
+            Demo Link:{' '}
           </Text>
           <Input
             id={`projectLink${id}`}
             name={`projectLink${id}`}
             {...register(`projectLink${id}`, {
-              required: "This is required",
+              required: 'This is required',
             })}
             isInvalid={errors[`projectLink${id}`] ? true : false}
-            placeholder="demoNotes.com"
-            width="64vh"
+            placeholder='demoNotes.com'
+            width='64vh'
           />
         </InputGroup>
-        <InputGroup width="90vh">
-          <Text fontWeight={"bold"} display="block" width="26vh">
-            Image Link:{" "}
+        <InputGroup width='90vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh'>
+            Image Link:{' '}
           </Text>
           <Input
             id={`projectImgLink${id}`}
             name={`projectImgLink${id}`}
             {...register(`projectImgLink${id}`, {
-              required: "This is required",
+              required: 'This is required',
             })}
             isInvalid={errors[`projectImgLink${id}`] ? true : false}
-            placeholder="NotesImage.jpg"
-            width="64vh"
+            placeholder='NotesImage.jpg'
+            width='64vh'
           />
         </InputGroup>
-        <InputGroup width="90vh">
-          <Text fontWeight={"bold"} display="block" width="26vh">
-            Technologies:{" "}
+        <InputGroup width='90vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh'>
+            Technologies:{' '}
           </Text>
           <Controller
             control={control}
             name={`project${id}`}
-            rules={{ required: "Select Technologies" }}
+            rules={{ required: 'Select Technologies' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
             }) => (
-              <FormControl width="64vh" isInvalid={!!error} id={`project${id}`}>
+              <FormControl width='64vh' isInvalid={!!error} id={`project${id}`}>
                 <CreatableSelect
                   isMulti
                   name={name}
@@ -104,30 +102,29 @@ const Project = ({ register, errors, technologies, control, id }) => {
                   onBlur={onBlur}
                   value={value}
                   options={technologies}
-                  placeholder="Select Technologies"
+                  placeholder='Select Technologies'
                   closeMenuOnSelect={false}
                 />
               </FormControl>
             )}
           />
         </InputGroup>
-        <InputGroup width="90vh">
-          <Text fontWeight={"bold"} display="block" width="26vh">
-            Status:{" "}
+        <InputGroup width='90vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh'>
+            Status:{' '}
           </Text>
           <Controller
             control={control}
             name={`projectStatus${id}`}
-            rules={{ required: "Project Status required" }}
+            rules={{ required: 'Project Status required' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
             }) => (
               <FormControl
-                width="36%"
+                width='36%'
                 isInvalid={!!error}
-                id={`projectStatus${id}`}
-              >
+                id={`projectStatus${id}`}>
                 <Select
                   name={name}
                   ref={ref}
@@ -135,11 +132,11 @@ const Project = ({ register, errors, technologies, control, id }) => {
                   onBlur={onBlur}
                   value={value}
                   options={[
-                    { value: "Completed", label: "Completed" },
-                    { value: "Working On it", label: "Working On it" },
+                    { value: 'Completed', label: 'Completed' },
+                    { value: 'Working On it', label: 'Working On it' },
                   ]}
-                  placeholder="Project status"
-                  selectedOptionColor="green"
+                  placeholder='Project status'
+                  selectedOptionColor='green'
                   isSearchable={false}
                 />
               </FormControl>

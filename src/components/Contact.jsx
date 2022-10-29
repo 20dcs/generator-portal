@@ -1,6 +1,5 @@
 import { Box, Flex, Grid } from '@chakra-ui/react';
 import Feedback from './Feedback';
-import Form from './Form';
 function Contact() {
   return (
     <Flex
