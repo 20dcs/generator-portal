@@ -152,7 +152,7 @@ const Form = () => {
     // }
 
     console.log('newPerson', newPerson);
-    await fetch('http://localhost:5000/users/add', {
+    await fetch(`${process.env.BACKEND_URL}/users/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ const Form = () => {
       return;
     });
   }
-
+  console.log('env test', `${process.env.REACT_APP_BACKEND_URL}/users/add`);
   return (
     <ChakraProvider resetCSS>
       <form onSubmit={handleSubmit(onSubmit)}>
