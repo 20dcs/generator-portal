@@ -64,7 +64,7 @@ const Form = () => {
   function handleAdd() {
     setNumberOfProjects(numberOfProjects + 1);
   }
-  function onSubmit(values) {
+  async function onSubmit(values) {
     console.log(values);
     let data = {
       Color: colorPicker.background ?? '#00FFFF',
@@ -137,8 +137,23 @@ const Form = () => {
       data.Projects = tempArray;
     }
     console.log(data);
-  }
 
+    const newPerson = { userName: values.name, data: values };
+
+    console.log('newPerson', newPerson);
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPerson),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+
+    console.log('env test', `${process.env.REACT_APP_BACKEND_URL}/users/add`);
+  }
   return (
     <ChakraProvider resetCSS>
       <form onSubmit={handleSubmit(onSubmit)}>
