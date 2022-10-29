@@ -96,10 +96,10 @@ export default function Navbar() {
             fontSize={'md'}
             fontWeight={600}
             color={'white'}
-            bg={'pink.400'}
+            bg={'#0A7CC9'}
             href={'#'}
             _hover={{
-              bg: 'pink.300',
+              bg: '#5DB7F4',
             }}>
             Sign Up
           </Button>

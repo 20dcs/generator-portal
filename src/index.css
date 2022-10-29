@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#bio{
+  margin-left: 25px;
+}
+
+#description{
+  width: 100vh;
+  
+  margin-left: 200px;
+}
+
+
+.sketchpicker{
+  margin-left: 204px;
+  margin-bottom: 20px;
+}
+#imgLink{
+  margin-left: 23px;
+}
+#skills{
+  margin-left: 30px;
+}

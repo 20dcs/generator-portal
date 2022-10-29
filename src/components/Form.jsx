@@ -1,5 +1,6 @@
 import React from 'react';
-import { SketchPicker } from 'react-color'
+
+
 import { HexColorPicker } from "react-colorful";
 import {
   ChakraProvider,
@@ -21,9 +22,21 @@ import {
 import { Select, CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { SketchPicker, BlockPicker } from "react-color";
+
 
 const Form = () => {
-  const [color, setColor] = useState("#aabbcc");
+  const [sketchPickerColor, setSketchPickerColor] = useState({
+    r: "241",
+    g: "112",
+    b: "19",
+    a: "1",
+  });
+  // destructuring rgba from state
+  const { r, g, b, a } = sketchPickerColor;
+
+  //creating state to store our color and also set color using onChange event for block picker
+
   let technologies = [
     {
       label: 'Technologies',
@@ -152,11 +165,27 @@ const Form = () => {
             maxW={'80%'}>
             <Heading>Introduction</Heading>
             <Grid templateColumns='repeat(5, 1fr)' gap={1}>
-            <Text fontWeight={'bold'} width='20vh'>
-                Choose theme color:{' '}
-            </Text>
-            {/* Color picker*/ }
-            <HexColorPicker color={color} onChange={setColor} />
+            <div
+      className="App"
+      style={{ display: "flex", justifyContent: "space-around" }}
+    >
+      <div>
+      <Text fontWeight={'bold'} width='20vh'>
+                Choose any color:
+              </Text>
+        <div className="sketchpicker">
+        <SketchPicker 
+          onChange={(color) => {
+            setSketchPickerColor(color.rgb);
+          }}
+          color={sketchPickerColor}
+        /></div>
+      </div>
+      
+    </div>
+            </Grid>
+            <Grid templateColumns='repeat(5, 1fr)' gap={1}>
+            
               <Text fontWeight={'bold'} width='20vh'>
                 My name is:{' '}
               </Text>
@@ -246,7 +275,7 @@ const Form = () => {
                 isInvalid={errors?.description ? true : false}
                 size='md'
                 placeholder='Lorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsun'
-                minWidth='80vh'
+                minWidth='30vh'
                 minHeight='16vh'
               />
               <Grid templateColumns='repeat(5, 1fr)' gap={14}>
@@ -292,6 +321,7 @@ const Form = () => {
           </CheckboxGroup> */}
               <Controller
                 control={control}
+                id='skills'
                 name='skills'
                 rules={{ required: 'Please enter at least one food group.' }}
                 render={({
@@ -687,13 +717,16 @@ const Form = () => {
               </Grid>
             </Grid>
             <Button
-              bgColor={'#000000'}
-              color={'gray.100'}
+              width={200}
+              marginLeft={210}
+              marginTop={-30}
+              bgColor={'#0A7CC9'}
+              color={'white'}
               isLoading={isSubmitting}
               borderRadius={'6px'}
               _hover={{
                 color: '#000000',
-                bgColor: 'gray.100',
+                bgColor: '#5DB7F4',
               }}
               type='submit'>
               Submit
