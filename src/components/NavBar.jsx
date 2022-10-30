@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -83,7 +82,7 @@ export default function Navbar() {
             size='lg'
             aria-label={'Toggle Dark mode'}
           />
-          <Button
+          {/* <Button
             as={'a'}
             fontSize={'md'}
             fontWeight={400}
@@ -102,7 +101,7 @@ export default function Navbar() {
               bg: '#5DB7F4',
             }}>
             Sign Up
-          </Button>
+          </Button> */}
         </Stack>
       </Flex>
 

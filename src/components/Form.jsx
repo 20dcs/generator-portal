@@ -437,9 +437,9 @@ const Form = () => {
                 ))
               }
               <Button
-                width={200}
+                width={128}
                 marginX={'auto'}
-                marginTop={-30}
+                marginTop={'4px'}
                 bgColor={'#1A202C'}
                 color={'#EDF2F7'}
                 borderRadius={'6px'}
@@ -448,12 +448,12 @@ const Form = () => {
                   bgColor: '#A0AEC0',
                 }}
                 onClick={() => handleAdd()}>
-                Add
+                Add Project
               </Button>
             </Grid>
             <Button
               width={200}
-              marginLeft={210}
+              marginX={'auto'}
               marginTop={-30}
               bgColor={'#0A7CC9'}
               color={'white'}
