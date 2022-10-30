@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+### Portfoliomaker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# How Portfolio Maker works:
+   1) Open This link and fillup the data... [https://portfoliomaker.netlify.app/] 
 
-## Available Scripts
+![Screenshot (9)](https://github.com/20dcs/portfoliomaker-frontend/blob/main/src/components/Screenshots/Screenshot1.png)
 
-In the project directory, you can run:
+![Screenshot (9)](https://github.com/20dcs/portfoliomaker-frontend/blob/main/src/components/Screenshots/Screenshot2.png)
 
-### `npm start`
+![Screenshot (9)](https://github.com/20dcs/portfoliomaker-frontend/blob/main/src/components/Screenshots/Screenshot3.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Screenshot (9)](https://github.com/20dcs/portfoliomaker-frontend/blob/main/src/components/Screenshots/Screenshot3.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   2) simply Click on Submit button and get your data.json code.
 
-### `npm test`
+   3) Now open This link [https://github.com/20dcs/portfolio-template] and clone Github Repository...
+      
+      # Follow this simple steps to clone Repository.
+      1. open [https://github.com/20dcs/portfolio-template] 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Screenshot (9)](https://github.com/20dcs/portfolio-template/blob/main/components/Screenshots/Screenshot5.png)
 
-### `npm run build`
+      2. Click on 'code' button and copy that https link.
+      3. Now open VsCode -> Open folder in which you have to clone Repository.
+      3. Open New Terminal from Terminal in VsCode.
+      4. Write below command
+         -> git clone https://github.com/20dcs/portfolio-template.git
+      
+      5. After cloning Repository, Open portfolio-template folder in VsCode -> Open New Terminal and write below command
+         -> npm i
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   4) Open data.json file in VsCode (portfolio-template folder) and paste that data wich you have get from portfolio maker website.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   5) write below command in Terminal to run the portfolio-template
+      -> npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
