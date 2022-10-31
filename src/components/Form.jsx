@@ -77,7 +77,12 @@ const Form = () => {
       },
       HomePage: {
         name: values?.name ?? 'Jhon Doe',
-        Position: ['Position 1', 'Position 2', 'Position 3', 'Position 4'],
+        Position: [
+          values?.position1,
+          values?.position2,
+          values?.position3,
+          values?.position4,
+        ],
         description:
           values?.bio ??
           'I design and build websites that look good, and work well.',
@@ -86,7 +91,8 @@ const Form = () => {
         AboutParagraph:
           values?.description ??
           'I am a frontend developer and designer with a passion for creating beautiful and user-friendly websites and applications. I have a strong background in both web development and graphic design, and I enjoy using my skills to create stunning websites and interfaces that are easy to use and navigate.In my previous work, I have designed and developed websites for a variety of clients, including small businesses, non-profit organizations, and large corporations. I have also created mobile applications and responsive websites that are compatible with a variety of devices and screen sizes. My goal is always to create websites and applications that are visually appealing and user-friendly, and I believe that my skills and experience make me an excellent frontend developer and designer.',
-        ImageLink: value?.imgLink ??
+        ImageLink:
+          values?.imgLink ??
           'https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp',
       },
       Skills: ['Html', 'Bootstrap', 'Figma'],
@@ -105,9 +111,15 @@ const Form = () => {
       ],
       Contact: {
         Email: values?.email ?? 'johndoe@gmail.com',
-        Github:`https://github.com/${values?.github}` ?? 'https://github.com/johndoe',
-        Twitter: `https://twitter.com/${values?.twitter}` ?? 'https://twitter.com/johndoe',
-        linkedIn: `https://www.linkedin.com/in/${values?.linkedIn}` ?? 'https://twitter.com/johndoe',
+        Github:
+          `https://github.com/${values?.github}` ??
+          'https://github.com/johndoe',
+        Twitter:
+          `https://twitter.com/${values?.twitter}` ??
+          'https://twitter.com/johndoe',
+        linkedIn:
+          `https://www.linkedin.com/in/${values?.linkedIn}` ??
+          'https://twitter.com/johndoe',
       },
     };
 
@@ -470,33 +482,41 @@ const Form = () => {
           </Grid>
         </FormControl>
       </form>
-     {data && <Grid
-        paddingBottom={'4vh'}
-        templateColumns='repeat(1, 1fr)'
-        marginX={'auto'}
-        marginTop={'4%'}
-        maxW={'100%'}>
-        <Code marginX={'auto'} height={'100vh'} width={'100vh'} overflow={'scroll'}>
-          <Button
-            bgColor={'gray.400'}
-            color={'white'}
-            isLoading={isSubmitting}
-            borderRadius={'6px'}
-            _hover={{
-              color: 'black',
-            }}
-            float={'right'}
-            margin={'4px'}
-            onClick={() => {
-              setValue(JSON.stringify(data));
-              onCopy();
-            }}>
-            {hasCopied ? 'Copied!' : 'Copy'}
-          </Button>
+      {data && (
+        <Grid
+          paddingBottom={'4vh'}
+          templateColumns='repeat(1, 1fr)'
+          marginX={'auto'}
+          marginTop={'4%'}
+          maxW={'100%'}>
+          <Code
+            marginX={'auto'}
+            height={'100vh'}
+            width={'100vh'}
+            overflow={'scroll'}>
+            <Button
+              bgColor={'gray.400'}
+              color={'white'}
+              isLoading={isSubmitting}
+              borderRadius={'6px'}
+              _hover={{
+                color: 'black',
+              }}
+              float={'right'}
+              margin={'4px'}
+              onClick={() => {
+                setValue(JSON.stringify(data));
+                onCopy();
+              }}>
+              {hasCopied ? 'Copied!' : 'Copy'}
+            </Button>
 
-          <pre style={{ margin: '16px' }}>{JSON.stringify(data, null, 2)} </pre>
-        </Code>
-      </Grid>}
+            <pre style={{ margin: '16px' }}>
+              {JSON.stringify(data, null, 2)}{' '}
+            </pre>
+          </Code>
+        </Grid>
+      )}
     </ChakraProvider>
   );
 };
