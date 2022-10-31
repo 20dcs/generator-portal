@@ -105,9 +105,9 @@ const Form = () => {
       ],
       Contact: {
         Email: values?.email ?? 'johndoe@gmail.com',
-        Github: values?.github ?? 'https://github.com/johndoe',
-        Twitter: values?.twitter ?? 'https://twitter.com/johndoe',
-        linkedIn: values?.linkedIn ?? 'https://linkedin.com/',
+        Github:`https://github.com/${values?.github}` ?? 'https://github.com/johndoe',
+        Twitter: `https://twitter.com/${values?.twitter}` ?? 'https://twitter.com/johndoe',
+        linkedIn: `https://www.linkedin.com/in/${values?.linkedIn}` ?? 'https://twitter.com/johndoe',
       },
     };
 
