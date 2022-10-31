@@ -14,6 +14,8 @@ import {
   FormControl,
   FormErrorMessage,
   Button,
+  Code,
+  useClipboard,
 } from '@chakra-ui/react';
 import { CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
@@ -27,7 +29,8 @@ const Form = () => {
   });
 
   const [numberOfProjects, setNumberOfProjects] = useState(1);
-
+  const [data, setData] = useState();
+  const { onCopy, value, setValue, hasCopied } = useClipboard('');
   let technologies = [
     {
       label: 'Technologies',
@@ -66,7 +69,7 @@ const Form = () => {
   }
   async function onSubmit(values) {
     console.log('form', values);
-    let data = {
+    let updatedData = {
       Color: colorPicker.background ?? '#00FFFF',
       Head: {
         title: values?.name ?? 'Jhon Doe | Frontend Developer & Designer',
@@ -83,7 +86,7 @@ const Form = () => {
         AboutParagraph:
           values?.description ??
           'I am a frontend developer and designer with a passion for creating beautiful and user-friendly websites and applications. I have a strong background in both web development and graphic design, and I enjoy using my skills to create stunning websites and interfaces that are easy to use and navigate.In my previous work, I have designed and developed websites for a variety of clients, including small businesses, non-profit organizations, and large corporations. I have also created mobile applications and responsive websites that are compatible with a variety of devices and screen sizes. My goal is always to create websites and applications that are visually appealing and user-friendly, and I believe that my skills and experience make me an excellent frontend developer and designer.',
-        ImageLink:
+        ImageLink: value?.imgLink ??
           'https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp',
       },
       Skills: ['Html', 'Bootstrap', 'Figma'],
@@ -111,10 +114,10 @@ const Form = () => {
     if (values?.skills) {
       let tempArray = [];
       values.skills.forEach((s) => tempArray.push(s.value));
-      data.Skills = tempArray;
+      updatedData.Skills = tempArray;
     }
 
-    if (numberOfProjects > 1) {
+    if (numberOfProjects > 0) {
       let tempArray = [];
 
       [...Array(numberOfProjects)].map((e, index) => {
@@ -134,11 +137,11 @@ const Form = () => {
         proj.Technologies = tempTechArray;
         tempArray.push(proj);
       });
-      data.Projects = tempArray;
+      updatedData.Projects = tempArray;
     }
-    console.log('dat.json',data);
-
-    const newPerson = { userName: values.name, data: data };
+    console.log('data.json', updatedData);
+    setData(updatedData);
+    const newPerson = { userName: values.name, data: updatedData };
 
     console.log('newPerson', newPerson);
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
@@ -383,12 +386,12 @@ const Form = () => {
               <InputGroup width='64vh'>
                 <InputLeftAddon>https://www.linkedin.com/in/</InputLeftAddon>
                 <Input
-                  id='linkedin'
-                  name='linkedin'
-                  {...register('linkedin', {
+                  id='linkedIn'
+                  name='linkedIn'
+                  {...register('linkedIn', {
                     required: 'This is required',
                   })}
-                  isInvalid={errors?.linkedin ? true : false}
+                  isInvalid={errors?.linkedIn ? true : false}
                   placeholder='peterparker'
                   width
                 />
@@ -467,6 +470,33 @@ const Form = () => {
           </Grid>
         </FormControl>
       </form>
+     {data && <Grid
+        paddingBottom={'4vh'}
+        templateColumns='repeat(1, 1fr)'
+        marginX={'auto'}
+        marginTop={'4%'}
+        maxW={'100%'}>
+        <Code marginX={'auto'} height={'100vh'} width={'100vh'} overflow={'scroll'}>
+          <Button
+            bgColor={'gray.400'}
+            color={'white'}
+            isLoading={isSubmitting}
+            borderRadius={'6px'}
+            _hover={{
+              color: 'black',
+            }}
+            float={'right'}
+            margin={'4px'}
+            onClick={() => {
+              setValue(JSON.stringify(data));
+              onCopy();
+            }}>
+            {hasCopied ? 'Copied!' : 'Copy'}
+          </Button>
+
+          <pre style={{ margin: '16px' }}>{JSON.stringify(data, null, 2)} </pre>
+        </Code>
+      </Grid>}
     </ChakraProvider>
   );
 };
