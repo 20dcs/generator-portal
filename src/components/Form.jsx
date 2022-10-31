@@ -65,7 +65,7 @@ const Form = () => {
     setNumberOfProjects(numberOfProjects + 1);
   }
   async function onSubmit(values) {
-    console.log(values);
+    console.log('form', values);
     let data = {
       Color: colorPicker.background ?? '#00FFFF',
       Head: {
@@ -136,9 +136,9 @@ const Form = () => {
       });
       data.Projects = tempArray;
     }
-    console.log(data);
+    console.log('dat.json',data);
 
-    const newPerson = { userName: values.name, data: values };
+    const newPerson = { userName: values.name, data: data };
 
     console.log('newPerson', newPerson);
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
@@ -151,8 +151,6 @@ const Form = () => {
       window.alert(error);
       return;
     });
-
-    console.log('env test', `${process.env.REACT_APP_BACKEND_URL}/users/add`);
   }
   return (
     <ChakraProvider resetCSS>
