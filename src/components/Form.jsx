@@ -156,16 +156,17 @@ const Form = () => {
     const newPerson = { userName: values.name, data: updatedData };
 
     console.log('newPerson', newPerson);
-    await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newPerson),
-    }).catch((error) => {
-      window.alert(error);
-      return;
-    });
+    // await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(newPerson),
+    // }).catch((error) => {
+    //   window.alert(error); 
+    //   return;
+    // });
+
   }
   return (
     <ChakraProvider resetCSS>
