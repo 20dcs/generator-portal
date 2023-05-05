@@ -33,23 +33,45 @@ const Form = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard('');
   let technologies = [
     {
-      label: 'Technologies',
+      label: 'Skills',
       options: [
-        { value: 'AdobeXd', label: 'AdobeXd' },
-        { value: 'AfterEffects', label: 'AfterEffects' },
-        { value: 'Bootstrap', label: 'Bootstrap' },
-        { value: 'Css', label: 'Css' },
-        { value: 'HTML', label: 'HTML' },
-        { value: 'Figma', label: 'Figma' },
-        { value: 'Firebase', label: 'Firebase' },
-        { value: 'Illustrator', label: 'Illustrator' },
-        { value: 'Javascript', label: 'Javascript' },
-        { value: 'ReactJs', label: 'ReactJs' },
-        { value: 'NextJs', label: 'NextJs' },
-        { value: 'NodeJs', label: 'NodeJs' },
-        { value: 'Sass', label: 'Sass' },
-        { value: 'Tailwind', label: 'Tailwind' },
-      ],
+        { value: 'ReactJS', label: 'ReactJS' },
+        { value: 'Adobe Creative Suite', label: 'Adobe Creative Suite' },
+        { value: 'Lighting Techniques', label: 'Lighting Techniques' },
+        { value: 'Creative Writing', label: 'Creative Writing' },
+        { value: 'Social Media Analytics', label: 'Social Media Analytics' },
+        { value: 'Final Cut Pro', label: 'Final Cut Pro' },
+        { value: 'Agile Methodology', label: 'Agile Methodology' },
+        { value: 'Persuasion Techniques', label: 'Persuasion Techniques' },
+        { value: 'SEO Optimization', label: 'SEO Optimization' },
+        { value: 'Conflict Resolution', label: 'Conflict Resolution' },
+        { value: 'Financial Analysis', label: 'Financial Analysis' },
+        { value: 'Data Visualization', label: 'Data Visualization' },
+        { value: 'Java', label: 'Java' },
+        { value: 'Product Roadmapping', label: 'Product Roadmapping' },
+        { value: 'Employee Relations', label: 'Employee Relations' },
+        { value: 'Email Marketing', label: 'Email Marketing' },
+        { value: 'Content Strategy', label: 'Content Strategy' },
+        { value: 'Budget Management', label: 'Budget Management' },
+        { value: 'Wireframing', label: 'Wireframing' },
+        { value: 'Curriculum Development', label: 'Curriculum Development' },
+        { value: 'Contract Drafting', label: 'Contract Drafting' },
+        { value: 'Medical Diagnosis', label: 'Medical Diagnosis' },
+        { value: 'Mechanical Engineering', label: 'Mechanical Engineering' },
+        { value: 'Culinary Arts', label: 'Culinary Arts' },
+        { value: 'AutoCAD', label: 'AutoCAD' },
+        { value: 'Business Process Mapping', label: 'Business Process Mapping' },
+        { value: 'Forecasting', label: 'Forecasting' },
+        { value: 'Business Development', label: 'Business Development' },
+        { value: 'Fitness Programming', label: 'Fitness Programming' },
+        { value: 'Painting Techniques', label: 'Painting Techniques' },
+        { value: 'Music Production', label: 'Music Production' },
+        { value: 'Pattern Making', label: 'Pattern Making' },
+        { value: 'SEO Copywriting', label: 'SEO Copywriting' },
+        { value: 'Crisis Management', label: 'Crisis Management' },
+        { value: 'Property Valuation', label: 'Property Valuation' },
+        { value: 'Resource Allocation', label: 'Resource Allocation' }
+      ]
     },
   ];
 
@@ -60,7 +82,7 @@ const Form = () => {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      name: 'Spiderman',
+      // name: 'Spiderman',
     },
   });
 
@@ -212,6 +234,7 @@ const Form = () => {
                 {...register('name', {
                   required: 'This is required',
                 })}
+
                 isInvalid={errors?.name ? true : false}
                 placeholder='Peter Parker'
               />
@@ -291,7 +314,7 @@ const Form = () => {
                 })}
                 isInvalid={errors?.description ? true : false}
                 size='md'
-                placeholder='Lorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsunLorem ispsun'
+                placeholder='I am a frontend developer and designer with a passion for creating beautiful and user-friendly websites and applications. I have a strong background in both web development and graphic design, and I enjoy using my skills to create stunning websites and interfaces that are easy to use and navigate.'
                 minWidth='30vh'
                 minHeight='16vh'
               />
@@ -337,6 +360,7 @@ const Form = () => {
                       onBlur={onBlur}
                       value={value}
                       options={technologies}
+                      // colorScheme={'pink'}
                       placeholder='Select Technologies'
                       closeMenuOnSelect={false}
                     />

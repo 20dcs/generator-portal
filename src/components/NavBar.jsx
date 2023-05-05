@@ -31,7 +31,7 @@ export default function Navbar() {
     <Box>
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        color={useColorModeValue('gray.800', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -56,8 +56,10 @@ export default function Navbar() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
+            color={useColorModeValue('gray.800', 'white')}
+            fontWeight='extrabold'
+          >
+            ProFolio
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -70,7 +72,7 @@ export default function Navbar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-          <IconButton
+          {/* <IconButton
             backgroundColor={useColorModeValue('gray.900', 'gray.100')}
             color={useColorModeValue('gray.100', 'gray.900')}
             onClick={toggleColorMode}
@@ -82,6 +84,10 @@ export default function Navbar() {
             size='lg'
             aria-label={'Toggle Dark mode'}
           />
+           */}
+
+          {/* DARK MODE BTN */}
+
           {/* <Button
             as={'a'}
             fontSize={'md'}
@@ -113,7 +119,7 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200');
+  const linkColor = useColorModeValue('gray.800', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
@@ -222,7 +228,7 @@ const MobileNavItem = ({ label, children, href }) => {
         }}>
         <Text
           fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
+          color={useColorModeValue('gray.800', 'gray.200')}>
           {label}
         </Text>
         {children && (
