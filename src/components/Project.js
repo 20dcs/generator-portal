@@ -53,7 +53,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
         </InputGroup>
         <InputGroup width='90vh'>
           <Text fontWeight={'bold'} display='block' width='26vh'>
-            Demo Link:{' '}
+            Showcase Link:
           </Text>
           <Input
             id={`projectLink${id}`}
@@ -68,7 +68,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
         </InputGroup>
         <InputGroup width='90vh'>
           <Text fontWeight={'bold'} display='block' width='26vh'>
-            Image Link:{' '}
+            Image Link of the project:
           </Text>
           <Input
             id={`projectImgLink${id}`}
@@ -83,12 +83,12 @@ const Project = ({ register, errors, technologies, control, id }) => {
         </InputGroup>
         <InputGroup width='90vh'>
           <Text fontWeight={'bold'} display='block' width='26vh'>
-            Technologies:{' '}
+            Skills involved:{' '}
           </Text>
           <Controller
             control={control}
             name={`project${id}`}
-            rules={{ required: 'Select Technologies' }}
+            rules={{ required: 'Select Skills' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
@@ -102,7 +102,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
                   onBlur={onBlur}
                   value={value}
                   options={technologies}
-                  placeholder='Select Technologies'
+                  placeholder='Select Skills'
                   closeMenuOnSelect={false}
                 />
               </FormControl>

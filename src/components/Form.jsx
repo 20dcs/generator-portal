@@ -209,7 +209,7 @@ const Form = () => {
                 style={{ display: 'flex', justifyContent: 'space-around' }}>
                 <div>
                   <Text fontWeight={'bold'} width='20vh'>
-                    Choose any color:
+                    Choose theme color for the website:
                   </Text>
                   <div className='sketchpicker'>
                     <ChromePicker
@@ -226,7 +226,7 @@ const Form = () => {
             </Grid>
             <Grid templateColumns='repeat(5, 1fr)' gap={1}>
               <Text fontWeight={'bold'} width='20vh'>
-                My name is:{' '}
+                Your good name
               </Text>
               <Input
                 id='name'
@@ -242,7 +242,7 @@ const Form = () => {
             </Grid>
             <Grid templateColumns='repeat(5, 1fr)' gap={1}>
               <Text fontWeight={'bold'} width='20vh'>
-                Positions
+                What do you do
               </Text>
               <Input
                 id='Position 1'
@@ -252,7 +252,7 @@ const Form = () => {
                   required: 'This is required',
                 })}
                 isInvalid={errors?.position1 ? true : false}
-                placeholder='Position 1'
+                placeholder='Software Engineer'
               />
               <Input
                 id='Position 2'
@@ -262,7 +262,7 @@ const Form = () => {
                   required: 'This is required',
                 })}
                 isInvalid={errors?.position2 ? true : false}
-                placeholder='Position 2'
+                placeholder='Photographer'
               />
               <Input
                 id='Position 3'
@@ -272,7 +272,7 @@ const Form = () => {
                   required: 'This is required',
                 })}
                 isInvalid={errors?.position3 ? true : false}
-                placeholder='Position 3'
+                placeholder='Graphic Designer'
               />
               <Input
                 id='Position 4'
@@ -282,12 +282,12 @@ const Form = () => {
                   required: 'This is required',
                 })}
                 isInvalid={errors?.position4 ? true : false}
-                placeholder='Position 4'
+                placeholder='Footballer'
               />
             </Grid>
             <Grid templateColumns='repeat(5, 1fr)' gap={14}>
               <Text fontWeight={'bold'} width='20vh'>
-                Bio:{' '}
+                Single line Bio
               </Text>
               <Input
                 placeholder='I am secretly spiderman'
@@ -304,7 +304,7 @@ const Form = () => {
             </Grid>
             <Grid templateColumns='repeat(1 1fr)' gap={2}>
               <Text fontWeight={'bold'} width='20vh'>
-                Description:{' '}
+                More about you
               </Text>
               <Textarea
                 id='description'
@@ -320,7 +320,7 @@ const Form = () => {
               />
               <Grid templateColumns='repeat(5, 1fr)' gap={14}>
                 <Text fontWeight={'bold'} width='20vh'>
-                  Image Link:{' '}
+                {'Your display Image Link'}
                 </Text>
                 <Input
                   id='imgLink'
@@ -361,7 +361,7 @@ const Form = () => {
                       value={value}
                       options={technologies}
                       // colorScheme={'pink'}
-                      placeholder='Select Technologies'
+                      placeholder='Select Skills'
                       closeMenuOnSelect={false}
                     />
                   </FormControl>
