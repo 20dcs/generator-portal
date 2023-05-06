@@ -149,8 +149,8 @@ const Form = () => {
         Twitter:
           `https://twitter.com/${values?.twitter}` ??
           'https://twitter.com/johndoe',
-        linkedIn:
-          `https://www.linkedin.com/in/${values?.linkedIn}` ??
+        LinkedIn:
+          `https://www.linkedin.com/in/${values?.LinkedIn}` ??
           'https://twitter.com/johndoe',
       },
     };
@@ -432,12 +432,12 @@ const Form = () => {
               <InputGroup width='64vh'>
                 <InputLeftAddon>https://www.linkedin.com/in/</InputLeftAddon>
                 <Input
-                  id='linkedIn'
-                  name='linkedIn'
-                  {...register('linkedIn', {
+                  id='LinkedIn'
+                  name='LinkedIn'
+                  {...register('LinkedIn', {
                     required: 'This is required',
                   })}
-                  isInvalid={errors?.linkedIn ? true : false}
+                  isInvalid={errors?.LinkedIn ? true : false}
                   placeholder='peterparker'
                   width
                 />
