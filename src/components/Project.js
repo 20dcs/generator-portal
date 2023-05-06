@@ -59,7 +59,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             id={`projectLink${id}`}
             name={`projectLink${id}`}
             {...register(`projectLink${id}`, {
-              required: 'This is required',
+              // required: 'This is required',
             })}
             isInvalid={errors[`projectLink${id}`] ? true : false}
             placeholder='demoNotes.com'
@@ -74,7 +74,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             id={`projectImgLink${id}`}
             name={`projectImgLink${id}`}
             {...register(`projectImgLink${id}`, {
-              required: 'This is required',
+              // required: 'This is required',
             })}
             isInvalid={errors[`projectImgLink${id}`] ? true : false}
             placeholder='NotesImage.jpg'

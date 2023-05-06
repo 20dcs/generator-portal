@@ -16,6 +16,7 @@ import {
   Button,
   Code,
   useClipboard,
+  useToast,
 } from '@chakra-ui/react';
 import { CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
@@ -27,6 +28,8 @@ const Form = () => {
   const [colorPicker, setColorPicker] = useState({
     background: '#FF5733',
   });
+
+  const toast = useToast()
 
   const [numberOfProjects, setNumberOfProjects] = useState(1);
   const [data, setData] = useState();
@@ -91,6 +94,13 @@ const Form = () => {
   }
   async function onSubmit(values) {
     console.log('form', values);
+    toast({
+      title: 'Code Generated.',
+      description: "Your personalised data is ready.",
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })
     let updatedData = {
       Color: colorPicker.background ?? '#00FFFF',
       Head: {
@@ -269,7 +279,7 @@ const Form = () => {
                 name='Position 3'
                 variant='flushed'
                 {...register('position3', {
-                  required: 'This is required',
+                  // required: 'This is required',
                 })}
                 isInvalid={errors?.position3 ? true : false}
                 placeholder='Graphic Designer'
@@ -279,7 +289,7 @@ const Form = () => {
                 name='Position 4'
                 variant='flushed'
                 {...register('position4', {
-                  required: 'This is required',
+                  // required: 'This is required',
                 })}
                 isInvalid={errors?.position4 ? true : false}
                 placeholder='Footballer'
@@ -407,7 +417,7 @@ const Form = () => {
                   id='github'
                   name='github'
                   {...register('github', {
-                    required: 'This is required',
+                    // required: 'This is required',
                   })}
                   isInvalid={errors?.github ? true : false}
                   placeholder='peterparker'
