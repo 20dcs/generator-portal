@@ -2,6 +2,8 @@
 import Navbar from './components/NavBar';
 import Form from "./components/Form";
 import { Box, useColorModeValue } from '@chakra-ui/react';
+import SocialComponent from './components/Demo';
+import DemoForm from './components/Demoform';
 function App() {
   return (
     <div className="App">
@@ -13,7 +15,9 @@ function App() {
         )}
       >
         <Navbar />
-        <Form />
+        <DemoForm/>
+        {/* <SocialComponent/> */}
+        {/* <Form /> */}
       </Box>
     </div>
   );
