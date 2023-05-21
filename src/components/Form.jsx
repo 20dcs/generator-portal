@@ -152,6 +152,12 @@ const Form = () => {
         LinkedIn:
           `https://www.linkedin.com/in/${values?.LinkedIn}` ??
           'https://twitter.com/johndoe',
+        Kaggle:
+          `https://www.kaggle.com/${values?.kaggle}` ??
+          'https://twitter.com/johndoe',
+        Leetcode:
+          `https://leetcode.com/${values?.leetcode}` ??
+          'https://twitter.com/johndoe',
       },
     };
 
@@ -420,6 +426,42 @@ const Form = () => {
                     // required: 'This is required',
                   })}
                   isInvalid={errors?.github ? true : false}
+                  placeholder='peterparker'
+                  width
+                />
+              </InputGroup>
+            </Grid>
+            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
+              <Text fontWeight={'bold'} width='20vh'>
+                Leetcode:{' '}
+              </Text>
+              <InputGroup width='64vh'>
+                <InputLeftAddon>https://leetcode.com/</InputLeftAddon>
+                <Input
+                  id='leetcode'
+                  name='leetcode'
+                  {...register('leetcode', {
+                    // required: 'This is required',
+                  })}
+                  isInvalid={errors?.leetcode ? true : false}
+                  placeholder='peterparker'
+                  width
+                />
+              </InputGroup>
+            </Grid>
+            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
+              <Text fontWeight={'bold'} width='20vh'>
+                Kaggle:{' '}
+              </Text>
+              <InputGroup width='64vh'>
+                <InputLeftAddon>https://www.kaggle.com/</InputLeftAddon>
+                <Input
+                  id='kaggle'
+                  name='kaggle'
+                  {...register('kaggle', {
+                    // required: 'This is required',
+                  })}
+                  isInvalid={errors?.kaggle ? true : false}
                   placeholder='peterparker'
                   width
                 />
