@@ -29,7 +29,7 @@ const Form = () => {
     background: '#FF5733',
   });
 
-  const toast = useToast()
+  const toast = useToast();
 
   const [numberOfProjects, setNumberOfProjects] = useState(1);
   const [data, setData] = useState();
@@ -63,7 +63,10 @@ const Form = () => {
         { value: 'Mechanical Engineering', label: 'Mechanical Engineering' },
         { value: 'Culinary Arts', label: 'Culinary Arts' },
         { value: 'AutoCAD', label: 'AutoCAD' },
-        { value: 'Business Process Mapping', label: 'Business Process Mapping' },
+        {
+          value: 'Business Process Mapping',
+          label: 'Business Process Mapping',
+        },
         { value: 'Forecasting', label: 'Forecasting' },
         { value: 'Business Development', label: 'Business Development' },
         { value: 'Fitness Programming', label: 'Fitness Programming' },
@@ -73,8 +76,8 @@ const Form = () => {
         { value: 'SEO Copywriting', label: 'SEO Copywriting' },
         { value: 'Crisis Management', label: 'Crisis Management' },
         { value: 'Property Valuation', label: 'Property Valuation' },
-        { value: 'Resource Allocation', label: 'Resource Allocation' }
-      ]
+        { value: 'Resource Allocation', label: 'Resource Allocation' },
+      ],
     },
   ];
 
@@ -94,13 +97,7 @@ const Form = () => {
   }
   async function onSubmit(values) {
     console.log('form', values);
-    toast({
-      title: 'Code Generated.',
-      description: "Your personalised data is ready.",
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    })
+
     let updatedData = {
       Color: colorPicker.background ?? '#00FFFF',
       Head: {
@@ -174,7 +171,7 @@ const Form = () => {
         let proj = {
           title: values[`projectTitle${index}`] ?? 'Reports',
           ImageLink: values[`projectImgLink${index}`] ?? '',
-          Status: values[`projectStatus${index}`].value ?? 'Completed',
+          Status: values[`projectStatus${index}`]?.value ?? 'Completed',
           ProjectName: values[`projectTitle${index}`] ?? 'Reports',
           Technologies: [],
           Description:
@@ -183,7 +180,7 @@ const Form = () => {
           DemoLink: values[`projectLink${index}`] ?? '',
         };
         let tempTechArray = [];
-        values[`project${index}`].forEach((s) => tempTechArray.push(s.value));
+        values[`project${index}`]?.forEach((s) => tempTechArray.push(s.value));
         proj.Technologies = tempTechArray;
         tempArray.push(proj);
       });
@@ -191,6 +188,14 @@ const Form = () => {
     }
     console.log('data.json', updatedData);
     setData(updatedData);
+
+    toast({
+      title: 'Code Generated.',
+      description: 'Your personalised data is ready.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
     const newPerson = { userName: values.name, data: updatedData };
 
     console.log('newPerson', newPerson);
@@ -250,7 +255,6 @@ const Form = () => {
                 {...register('name', {
                   required: 'This is required',
                 })}
-
                 isInvalid={errors?.name ? true : false}
                 placeholder='Peter Parker'
               />
@@ -275,7 +279,7 @@ const Form = () => {
                 name='Position 2'
                 variant='flushed'
                 {...register('position2', {
-                  required: 'This is required',
+                  //  required: 'This is required',
                 })}
                 isInvalid={errors?.position2 ? true : false}
                 placeholder='Photographer'
@@ -310,7 +314,7 @@ const Form = () => {
                 id='bio'
                 name='bio'
                 {...register('bio', {
-                  required: 'This is required',
+                  //  required: 'This is required',
                 })}
                 isInvalid={errors?.bio ? true : false}
                 width='64vh'
@@ -326,7 +330,7 @@ const Form = () => {
                 id='description'
                 name='description'
                 {...register('description', {
-                  required: 'This is required',
+                  //  required: 'This is required',
                 })}
                 isInvalid={errors?.description ? true : false}
                 size='md'
@@ -336,13 +340,13 @@ const Form = () => {
               />
               <Grid templateColumns='repeat(5, 1fr)' gap={14}>
                 <Text fontWeight={'bold'} width='20vh'>
-                {'Your display Image Link'}
+                  {'Your display Image Link'}
                 </Text>
                 <Input
                   id='imgLink'
                   name='imgLink'
                   {...register('imgLink', {
-                    required: 'This is required',
+                    //  required: 'This is required',
                   })}
                   isInvalid={errors?.imgLink ? true : false}
                   placeholder='https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp'
@@ -362,7 +366,7 @@ const Form = () => {
                 control={control}
                 id='skills'
                 name='skills'
-                rules={{ required: 'Please enter at least one food group.' }}
+                // rules={{ required: 'Please enter at least one food group.' }}
                 render={({
                   field: { onChange, onBlur, value, name, ref },
                   fieldState: { error },
@@ -404,7 +408,7 @@ const Form = () => {
                 id='email'
                 name='email'
                 {...register('email', {
-                  required: 'This is required',
+                  //  required: 'This is required',
                 })}
                 isInvalid={errors?.email ? true : false}
                 placeholder='peterparker@gmail.com'
@@ -441,7 +445,7 @@ const Form = () => {
                   id='leetcode'
                   name='leetcode'
                   {...register('leetcode', {
-                    // required: 'This is required',
+                    //  required: 'This is required',
                   })}
                   isInvalid={errors?.leetcode ? true : false}
                   placeholder='peterparker'
@@ -477,7 +481,7 @@ const Form = () => {
                   id='LinkedIn'
                   name='LinkedIn'
                   {...register('LinkedIn', {
-                    required: 'This is required',
+                    //  required: 'This is required',
                   })}
                   isInvalid={errors?.LinkedIn ? true : false}
                   placeholder='peterparker'
@@ -495,7 +499,7 @@ const Form = () => {
                   id='twitter'
                   name='twitter'
                   {...register('twitter', {
-                    required: 'This is required',
+                    //  required: 'This is required',
                   })}
                   isInvalid={errors?.twitter ? true : false}
                   placeholder='peterparker'
