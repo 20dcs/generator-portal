@@ -8,8 +8,6 @@ import {
   Input,
   Grid,
   Textarea,
-  InputGroup,
-  InputLeftAddon,
   Heading,
   FormControl,
   FormErrorMessage,
@@ -17,6 +15,7 @@ import {
   Code,
   useClipboard,
   useToast,
+  Flex,
 } from '@chakra-ui/react';
 import { CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
@@ -25,11 +24,30 @@ import { useForm, Controller } from 'react-hook-form';
 import { ChromePicker } from 'react-color';
 
 const Form = () => {
+  const [socialPlatforms, setSocialPlatforms] = useState([
+    { name: 'Email', link: '' },
+  ]);
   const [colorPicker, setColorPicker] = useState({
     background: '#FF5733',
   });
 
   const toast = useToast();
+  const handleInputChange = (index, event) => {
+    const { name, value } = event.target;
+    const updatedPlatforms = [...socialPlatforms];
+    updatedPlatforms[index][name] = value;
+    setSocialPlatforms(updatedPlatforms);
+  };
+
+  const handleAddPlatform = () => {
+    setSocialPlatforms([...socialPlatforms, { name: '', link: '' }]);
+  };
+
+  const handleRemovePlatform = (index) => {
+    const updatedPlatforms = [...socialPlatforms];
+    updatedPlatforms.splice(index, 1);
+    setSocialPlatforms(updatedPlatforms);
+  };
 
   const [numberOfProjects, setNumberOfProjects] = useState(1);
   const [data, setData] = useState();
@@ -97,7 +115,13 @@ const Form = () => {
   }
   async function onSubmit(values) {
     console.log('form', values);
-
+    toast({
+      title: 'Code Generated.',
+      description: 'Your personalised data is ready.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
     let updatedData = {
       Color: colorPicker.background ?? '#00FFFF',
       Head: {
@@ -124,6 +148,7 @@ const Form = () => {
           values?.imgLink ??
           'https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp',
       },
+
       Skills: ['Html', 'Bootstrap', 'Figma'],
       Projects: [
         {
@@ -138,24 +163,7 @@ const Form = () => {
           DemoLink: values?.projectLink1 ?? '',
         },
       ],
-      Contact: {
-        Email: values?.email ?? 'johndoe@gmail.com',
-        Github:
-          `https://github.com/${values?.github}` ??
-          'https://github.com/johndoe',
-        Twitter:
-          `https://twitter.com/${values?.twitter}` ??
-          'https://twitter.com/johndoe',
-        LinkedIn:
-          `https://www.linkedin.com/in/${values?.LinkedIn}` ??
-          'https://twitter.com/johndoe',
-        Kaggle:
-          `https://www.kaggle.com/${values?.kaggle}` ??
-          'https://twitter.com/johndoe',
-        Leetcode:
-          `https://leetcode.com/${values?.leetcode}` ??
-          'https://twitter.com/johndoe',
-      },
+      Social: { socialPlatforms },
     };
 
     if (values?.skills) {
@@ -171,7 +179,7 @@ const Form = () => {
         let proj = {
           title: values[`projectTitle${index}`] ?? 'Reports',
           ImageLink: values[`projectImgLink${index}`] ?? '',
-          Status: values[`projectStatus${index}`]?.value ?? 'Completed',
+          Status: values[`projectStatus${index}`].value ?? 'Completed',
           ProjectName: values[`projectTitle${index}`] ?? 'Reports',
           Technologies: [],
           Description:
@@ -279,7 +287,7 @@ const Form = () => {
                 name='Position 2'
                 variant='flushed'
                 {...register('position2', {
-                  //  required: 'This is required',
+                  required: 'This is required',
                 })}
                 isInvalid={errors?.position2 ? true : false}
                 placeholder='Photographer'
@@ -314,7 +322,7 @@ const Form = () => {
                 id='bio'
                 name='bio'
                 {...register('bio', {
-                  //  required: 'This is required',
+                  required: 'This is required',
                 })}
                 isInvalid={errors?.bio ? true : false}
                 width='64vh'
@@ -330,7 +338,7 @@ const Form = () => {
                 id='description'
                 name='description'
                 {...register('description', {
-                  //  required: 'This is required',
+                  required: 'This is required',
                 })}
                 isInvalid={errors?.description ? true : false}
                 size='md'
@@ -346,7 +354,7 @@ const Form = () => {
                   id='imgLink'
                   name='imgLink'
                   {...register('imgLink', {
-                    //  required: 'This is required',
+                    required: 'This is required',
                   })}
                   isInvalid={errors?.imgLink ? true : false}
                   placeholder='https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp'
@@ -366,7 +374,7 @@ const Form = () => {
                 control={control}
                 id='skills'
                 name='skills'
-                // rules={{ required: 'Please enter at least one food group.' }}
+                rules={{ required: 'Please enter at least one food group.' }}
                 render={({
                   field: { onChange, onBlur, value, name, ref },
                   fieldState: { error },
@@ -399,113 +407,59 @@ const Form = () => {
             marginTop={'4%'}
             maxW={'80%'}>
             <Heading>Socials</Heading>
+            <Grid>
+              {socialPlatforms.map((platform, index) => (
+                <div key={index}>
+                  <Grid templateColumns='repeat(5, 1fr)' gap={14}>
+                    <Text fontWeight={'bold'} marginY={5}>
+                      {index === 0 ? `Email:` : `Social ${index}`}
+                    </Text>
+                    {index !== 0 ? (
+                      <Input
+                        type='text'
+                        name='name'
+                        placeholder='Platform name'
+                        value={platform.name}
+                        onChange={(event) => handleInputChange(index, event)}
+                        // width="50vh"
+                        size='md'
+                        marginY={5}
+                      />
+                    ) : (
+                      ``
+                    )}
 
-            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-              <Text fontWeight={'bold'} width='20vh'>
-                Email:{' '}
-              </Text>
-              <Input
-                id='email'
-                name='email'
-                {...register('email', {
-                  //  required: 'This is required',
-                })}
-                isInvalid={errors?.email ? true : false}
-                placeholder='peterparker@gmail.com'
-                width='64vh'
-                size='md'
-                display='block'
-              />
-            </Grid>
-            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-              <Text fontWeight={'bold'} width='20vh'>
-                Github:{' '}
-              </Text>
-              <InputGroup width='64vh'>
-                <InputLeftAddon>https://github.com/</InputLeftAddon>
-                <Input
-                  id='github'
-                  name='github'
-                  {...register('github', {
-                    // required: 'This is required',
-                  })}
-                  isInvalid={errors?.github ? true : false}
-                  placeholder='peterparker'
-                  width
-                />
-              </InputGroup>
-            </Grid>
-            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-              <Text fontWeight={'bold'} width='20vh'>
-                Leetcode:{' '}
-              </Text>
-              <InputGroup width='64vh'>
-                <InputLeftAddon>https://leetcode.com/</InputLeftAddon>
-                <Input
-                  id='leetcode'
-                  name='leetcode'
-                  {...register('leetcode', {
-                    //  required: 'This is required',
-                  })}
-                  isInvalid={errors?.leetcode ? true : false}
-                  placeholder='peterparker'
-                  width
-                />
-              </InputGroup>
-            </Grid>
-            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-              <Text fontWeight={'bold'} width='20vh'>
-                Kaggle:{' '}
-              </Text>
-              <InputGroup width='64vh'>
-                <InputLeftAddon>https://www.kaggle.com/</InputLeftAddon>
-                <Input
-                  id='kaggle'
-                  name='kaggle'
-                  {...register('kaggle', {
-                    // required: 'This is required',
-                  })}
-                  isInvalid={errors?.kaggle ? true : false}
-                  placeholder='peterparker'
-                  width
-                />
-              </InputGroup>
-            </Grid>
-            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-              <Text fontWeight={'bold'} width='20vh'>
-                LinkedIn:{' '}
-              </Text>
-              <InputGroup width='64vh'>
-                <InputLeftAddon>https://www.linkedin.com/in/</InputLeftAddon>
-                <Input
-                  id='LinkedIn'
-                  name='LinkedIn'
-                  {...register('LinkedIn', {
-                    //  required: 'This is required',
-                  })}
-                  isInvalid={errors?.LinkedIn ? true : false}
-                  placeholder='peterparker'
-                  width
-                />
-              </InputGroup>
-            </Grid>
-            <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-              <Text fontWeight={'bold'} width='20vh'>
-                Twitter:{' '}
-              </Text>
-              <InputGroup width='64vh'>
-                <InputLeftAddon>https://twitter.com/</InputLeftAddon>
-                <Input
-                  id='twitter'
-                  name='twitter'
-                  {...register('twitter', {
-                    //  required: 'This is required',
-                  })}
-                  isInvalid={errors?.twitter ? true : false}
-                  placeholder='peterparker'
-                  width
-                />
-              </InputGroup>
+                    <Input
+                      type='text'
+                      name='link'
+                      placeholder='Platform link'
+                      value={platform.link}
+                      onChange={(event) => handleInputChange(index, event)}
+                      // width="50vh"
+                      size='md'
+                      marginY={5}
+                    />
+                    {index > 0 && (
+                      <Button
+                        size='md'
+                        type='button'
+                        onClick={() => handleRemovePlatform(index)}
+                        marginY={5}
+                        fontSize={15}>
+                        Remove
+                      </Button>
+                    )}
+                  </Grid>
+                </div>
+              ))}
+              <Flex direction='row' align='center'>
+                <Button
+                  colorScheme='teal'
+                  size='md'
+                  onClick={handleAddPlatform}>
+                  Add Social Platform
+                </Button>
+              </Flex>
             </Grid>
             <Grid
               id='projects'
