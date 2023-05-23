@@ -115,13 +115,7 @@ const Form = () => {
   }
   async function onSubmit(values) {
     console.log('form', values);
-    toast({
-      title: 'Code Generated.',
-      description: 'Your personalised data is ready.',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    });
+
     let updatedData = {
       Color: colorPicker.background ?? '#00FFFF',
       Head: {
@@ -168,7 +162,7 @@ const Form = () => {
 
     if (values?.skills) {
       let tempArray = [];
-      values.skills.forEach((s) => tempArray.push(s.value));
+      values.skills.forEach((s) => tempArray.push(s?.value));
       updatedData.Skills = tempArray;
     }
 
@@ -179,7 +173,7 @@ const Form = () => {
         let proj = {
           title: values[`projectTitle${index}`] ?? 'Reports',
           ImageLink: values[`projectImgLink${index}`] ?? '',
-          Status: values[`projectStatus${index}`].value ?? 'Completed',
+          Status: values[`projectStatus${index}`]?.value ?? 'Completed',
           ProjectName: values[`projectTitle${index}`] ?? 'Reports',
           Technologies: [],
           Description:
@@ -188,7 +182,7 @@ const Form = () => {
           DemoLink: values[`projectLink${index}`] ?? '',
         };
         let tempTechArray = [];
-        values[`project${index}`]?.forEach((s) => tempTechArray.push(s.value));
+        values[`project${index}`]?.forEach((s) => tempTechArray.push(s?.value));
         proj.Technologies = tempTechArray;
         tempArray.push(proj);
       });
@@ -287,7 +281,7 @@ const Form = () => {
                 name='Position 2'
                 variant='flushed'
                 {...register('position2', {
-                  required: 'This is required',
+                  // required: 'This is required',
                 })}
                 isInvalid={errors?.position2 ? true : false}
                 placeholder='Photographer'
@@ -322,7 +316,7 @@ const Form = () => {
                 id='bio'
                 name='bio'
                 {...register('bio', {
-                  required: 'This is required',
+                  // required: 'This is required',
                 })}
                 isInvalid={errors?.bio ? true : false}
                 width='64vh'
@@ -338,7 +332,7 @@ const Form = () => {
                 id='description'
                 name='description'
                 {...register('description', {
-                  required: 'This is required',
+                  // // required: 'This is required',
                 })}
                 isInvalid={errors?.description ? true : false}
                 size='md'
@@ -354,7 +348,7 @@ const Form = () => {
                   id='imgLink'
                   name='imgLink'
                   {...register('imgLink', {
-                    required: 'This is required',
+                    // // required: 'This is required',
                   })}
                   isInvalid={errors?.imgLink ? true : false}
                   placeholder='https://cdn.vectorstock.com/i/1000x1000/23/81/default-avatar-profile-icon-vector-18942381.webp'
@@ -374,7 +368,7 @@ const Form = () => {
                 control={control}
                 id='skills'
                 name='skills'
-                rules={{ required: 'Please enter at least one food group.' }}
+                // rules={{ required: 'Please enter at least one food group.' }}
                 render={({
                   field: { onChange, onBlur, value, name, ref },
                   fieldState: { error },
@@ -424,6 +418,7 @@ const Form = () => {
                         // width="50vh"
                         size='md'
                         marginY={5}
+                        isInvalid={false}
                       />
                     ) : (
                       ``
@@ -438,6 +433,7 @@ const Form = () => {
                       // width="50vh"
                       size='md'
                       marginY={5}
+                      isInvalid={false}
                     />
                     {index > 0 && (
                       <Button
