@@ -29,7 +29,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             id={`projectTitle${id}`}
             name={`projectTitle${id}`}
             {...register(`projectTitle${id}`, {
-              required: 'This is required',
+              // required: 'This is required',
             })}
             isInvalid={errors[`projectTitle${id}`] ? true : false}
             placeholder='Notes'
@@ -44,7 +44,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             id={`projectDescription${id}`}
             name={`projectDescription${id}`}
             {...register(`projectDescription${id}`, {
-              required: 'This is required',
+              // required: 'This is required',
             })}
             isInvalid={errors[`projectDescription${id}`] ? true : false}
             placeholder='Lorem ispsum'
@@ -88,7 +88,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
           <Controller
             control={control}
             name={`project${id}`}
-            rules={{ required: 'Select Skills' }}
+            // rules={{ required: 'Select Skills' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
@@ -116,7 +116,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
           <Controller
             control={control}
             name={`projectStatus${id}`}
-            rules={{ required: 'Project Status required' }}
+            // rules={{ required: 'Project Status required' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
