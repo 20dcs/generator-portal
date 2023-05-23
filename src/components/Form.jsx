@@ -157,7 +157,7 @@ const Form = () => {
           DemoLink: values?.projectLink1 ?? '',
         },
       ],
-      Social: { socialPlatforms },
+      Contact: socialPlatforms,
     };
 
     if (values?.skills) {
