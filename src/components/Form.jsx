@@ -8,8 +8,6 @@ import {
   Input,
   Grid,
   Textarea,
-  InputGroup,
-  InputLeftAddon,
   Heading,
   FormControl,
   FormErrorMessage,
@@ -17,7 +15,6 @@ import {
   Code,
   useClipboard,
   useToast,
-  Stack,
   Flex,
 } from "@chakra-ui/react";
 import { CreatableSelect } from "chakra-react-select";
@@ -26,7 +23,7 @@ import { useForm, Controller } from "react-hook-form";
 
 import { ChromePicker } from "react-color";
 
-const DemoForm = () => {
+const Form = () => {
   const [socialPlatforms, setSocialPlatforms] = useState([
     { name: "Email", link: "" },
   ]);
@@ -561,4 +558,4 @@ const DemoForm = () => {
   );
 };
 
-export default DemoForm;
+export default Form;
