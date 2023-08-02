@@ -16,36 +16,59 @@ import {
   useClipboard,
   useToast,
   Flex,
+  Editable,
+  EditablePreview,
+  EditableInput,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
 import { CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import { ChromePicker } from 'react-color';
+import { EditIcon } from '@chakra-ui/icons';
 
+// "Contact": {
+//   "Email": "johndoe@gmail.com",
+//   "Github": "https://github.com/johndoe",
+//   "Twitter": "https://twitter.com/johndoe",
+//   "LinkedIn": "https://linkedin.com/johndoe"
+// }
 const Form = () => {
-  const [socialPlatforms, setSocialPlatforms] = useState([
-    { name: 'Email', link: '' },
-  ]);
+  const [socialPlatforms, setSocialPlatforms] = useState({ Email: '' });
   const [colorPicker, setColorPicker] = useState({
     background: '#FF5733',
   });
 
+  const [initialSocialName, setInitialValue] = useState('');
+
   const toast = useToast();
-  const handleInputChange = (index, event) => {
-    const { name, value } = event.target;
-    const updatedPlatforms = [...socialPlatforms];
-    updatedPlatforms[index][name] = value;
+
+  const handlePlatformNameSubmit = (newSocialName) => {
+    const { [initialSocialName]: _, ...updatedPlatforms } = socialPlatforms;
+    updatedPlatforms[newSocialName] = socialPlatforms[initialSocialName];
+
     setSocialPlatforms(updatedPlatforms);
   };
 
-  const handleAddPlatform = () => {
-    setSocialPlatforms([...socialPlatforms, { name: '', link: '' }]);
+  const handlePlatformLinkChange = (key, event) => {
+    const { value } = event.target;
+    let updatedSocialPlatforms = { ...socialPlatforms };
+    updatedSocialPlatforms[key] = value;
+    setSocialPlatforms(updatedSocialPlatforms);
   };
 
-  const handleRemovePlatform = (index) => {
-    const updatedPlatforms = [...socialPlatforms];
-    updatedPlatforms.splice(index, 1);
+  const handleAddPlatform = () => {
+    const newKey = `Social ${Object.keys(socialPlatforms).length}`;
+    setSocialPlatforms((prevPlatforms) => ({
+      ...prevPlatforms,
+      [newKey]: '',
+    }));
+  };
+
+  const handleRemovePlatform = (key) => {
+    const { [key]: _, ...updatedPlatforms } = socialPlatforms;
     setSocialPlatforms(updatedPlatforms);
   };
 
@@ -401,45 +424,43 @@ const Form = () => {
             marginTop={'4%'}
             maxW={'80%'}>
             <Heading>Socials</Heading>
+            <Alert status='info' maxW={'-webkit-max-content'}>
+              <AlertIcon />
+              You can click on title of 'social' to edit it, try clicking on
+              Email
+            </Alert>
+            <EditIcon />
             <Grid>
-              {socialPlatforms.map((platform, index) => (
-                <div key={index}>
+              {Object.keys(socialPlatforms).map((socialName, index) => (
+                <div key={`social${socialName}`}>
                   <Grid templateColumns='repeat(5, 1fr)' gap={14}>
-                    <Text fontWeight={'bold'} marginY={5}>
-                      {index === 0 ? `Email:` : `Social ${index}`}
-                    </Text>
-                    {index !== 0 ? (
-                      <Input
-                        type='text'
-                        name='name'
-                        placeholder='Platform name'
-                        value={platform.name}
-                        onChange={(event) => handleInputChange(index, event)}
-                        // width="50vh"
-                        size='md'
-                        marginY={5}
-                        isInvalid={false}
-                      />
-                    ) : (
-                      ``
-                    )}
+                    <Editable
+                      defaultValue={socialName}
+                      onSubmit={handlePlatformNameSubmit}
+                      onEdit={() => setInitialValue(socialName)}>
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
 
                     <Input
                       type='text'
                       name='link'
+                      key={`link${socialName}`}
                       placeholder='Platform link'
-                      value={platform.link}
-                      onChange={(event) => handleInputChange(index, event)}
+                      value={socialPlatforms[socialName]}
+                      onChange={(event) =>
+                        handlePlatformLinkChange(socialName, event)
+                      }
                       // width="50vh"
                       size='md'
                       marginY={5}
                       isInvalid={false}
                     />
-                    {index > 0 && (
+                    {socialName !== 'Email' && (
                       <Button
                         size='md'
                         type='button'
-                        onClick={() => handleRemovePlatform(index)}
+                        onClick={() => handleRemovePlatform(socialName)}
                         marginY={5}
                         fontSize={15}>
                         Remove
