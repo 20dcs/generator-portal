@@ -8,8 +8,8 @@ function App() {
       <Box
         bgGradient={useColorModeValue(
           'linear(to-tl, #FFBBEC, #A9C9FF, gray.100)',
-          'linear(to-tl, #FFBBEC, #A9C9FF, gray.100)'
-          // 'linear(to-t, #FF3CAC, #784BA0, gray.800)'
+          // 'linear(to-tl, #FFBBEC, #A9C9FF, gray.100)',
+          'linear(to-tl, #FF3CAC, #784BA0, gray.800)'
         )}
       >
         <Navbar />

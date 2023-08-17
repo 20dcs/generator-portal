@@ -21,6 +21,7 @@ import {
   EditableInput,
   Alert,
   AlertIcon,
+  useColorMode
 } from '@chakra-ui/react';
 import { CreatableSelect } from 'chakra-react-select';
 import { useState } from 'react';
@@ -36,6 +37,7 @@ import { EditIcon } from '@chakra-ui/icons';
 //   "LinkedIn": "https://linkedin.com/johndoe"
 // }
 const Form = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const [socialPlatforms, setSocialPlatforms] = useState({ Email: '' });
   const [colorPicker, setColorPicker] = useState({
     background: '#FF5733',
@@ -396,7 +398,7 @@ const Form = () => {
                   field: { onChange, onBlur, value, name, ref },
                   fieldState: { error },
                 }) => (
-                  <FormControl width='80vh' isInvalid={!!error} id={'skills'}>
+                  <FormControl width='80vh' textColor="black" isInvalid={!!error} id={'skills'}>
                     <CreatableSelect
                       isMulti
                       name={name}
