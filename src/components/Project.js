@@ -86,6 +86,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             Skills involved:{' '}
           </Text>
           <Controller
+          zIndex={2}
             control={control}
             name={`project${id}`}
             rules={{ required: 'Select Skills' }}
@@ -110,7 +111,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
           />
         </InputGroup>
         <InputGroup width='90vh'>
-          <Text fontWeight={'bold'} display='block' width='26vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh' >
             Status:{' '}
           </Text>
           <Controller
@@ -127,6 +128,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
                 isInvalid={!!error}
                 id={`projectStatus${id}`}>
                 <Select
+                zIndex={1}
                   name={name}
                   ref={ref}
                   onChange={onChange}

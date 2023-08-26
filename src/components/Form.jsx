@@ -238,7 +238,7 @@ const Form = () => {
     });
   }
   return (
-    <ChakraProvider resetCSS>
+    <ChakraProvider resetCSS >
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={errors}>
           <Grid
@@ -435,9 +435,10 @@ const Form = () => {
             <Grid>
               {Object.keys(socialPlatforms).map((socialName, index) => (
                 <div key={`social${socialName}`}>
-                  <Grid templateColumns='repeat(5, 1fr)' gap={14}>
+                  <Grid templateColumns='repeat(3, 2fr)' gap={5}>
                     <Editable
                       defaultValue={socialName}
+                      marginY={5}
                       onSubmit={handlePlatformNameSubmit}
                       onEdit={() => setInitialValue(socialName)}>
                       <EditablePreview />
@@ -460,6 +461,7 @@ const Form = () => {
                     />
                     {socialName !== 'Email' && (
                       <Button
+                      colorScheme='gray'
                         size='md'
                         type='button'
                         onClick={() => handleRemovePlatform(socialName)}

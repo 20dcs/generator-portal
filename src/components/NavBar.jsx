@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* DARK MODE BTN */}
 
           <Button
-            as={'a'}
+            // as={'a'}
             fontSize={'md'}
             fontWeight={400}
             // variant={'link'}
@@ -301,15 +301,15 @@ const NAV_ITEMS = [
   //   ],
   // },
   {
-    label: "Introduction",
-    href: "#",
+    label: "Home",
+    href: "/Home",
   },
   {
-    label: "Socials",
-    href: "#socials",
-  },
-  {
-    label: "Projects",
-    href: "#projects",
-  },
+    label: "Form",
+    href: "/Form",
+  }
+  // {
+  //   label: "Projects",
+  //   href: "#projects",
+  // },
 ];
