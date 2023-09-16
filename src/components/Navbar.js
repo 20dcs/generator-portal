@@ -17,7 +17,6 @@ import {
 import { BiSun, BiMoon } from "react-icons/bi";
 import { useDisclosure } from "@chakra-ui/hooks"; // Import hooks from Chakra UI
 import { AiOutlineMenu } from "react-icons/ai"; // Import the AiOutlineMenu icon
-import { VisuallyHidden } from "@chakra-ui/visually-hidden"; // Import VisuallyHidden from Chakra UI
 import { Link } from "react-router-dom";
 const SimpleNavbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();

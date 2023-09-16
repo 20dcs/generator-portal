@@ -12,6 +12,7 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <Box
+      minH='100vh'
         bgGradient={useColorModeValue(
           'linear(to-tl, #FFBBEC, #A9C9FF, gray.100)',
           // 'linear(to-tl, #FFBBEC, #A9C9FF, gray.100)',
