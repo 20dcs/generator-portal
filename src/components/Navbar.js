@@ -22,6 +22,7 @@ const SimpleNavbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
+  const isAuthenticated = localStorage.getItem("token") ? true : false;
   return (
     <React.Fragment>
       <chakra.header
@@ -68,15 +69,27 @@ const SimpleNavbar = () => {
               <Link to="/Home">
                 <Button variant="ghost">Home</Button>
               </Link>
-              <Link to="/Form">
-                <Button variant="ghost">Form</Button>
-              </Link>
-              <Link to="/Signin">
-                <Button variant="ghost">Sign in</Button>
-              </Link>
-              <Link to="/Signup">
-                <Button variant="ghost">Sign up</Button>
-              </Link>
+              {isAuthenticated && (
+                <>
+                  <Link to="/Form">
+                    <Button variant="ghost">Form</Button>
+                  </Link>
+                  <Button  onClick={()=>{
+                    localStorage.removeItem("token");
+                    window.location.reload();
+                  }} variant="ghost">Logout</Button>
+                </>
+              )}
+              {!isAuthenticated && (
+                <>
+                  <Link to="/Signin">
+                    <Button variant="ghost">Sign in</Button>
+                  </Link>
+                  <Link to="/Signup">
+                    <Button variant="ghost">Sign up</Button>
+                  </Link>
+                </>
+              )}
               <IconButton
                 backgroundColor={useColorModeValue("gray.900", "gray.100")}
                 color={useColorModeValue("gray.100", "gray.900")}
@@ -138,25 +151,43 @@ const SimpleNavbar = () => {
                   onClick={mobileNav.onClose}
                 />
                 <Link to="/Home">
-                <Button w="full" variant="ghost" onClick={mobileNav.onClose}>
-                  Home
-                </Button>
+                  <Button w="full" variant="ghost" onClick={mobileNav.onClose}>
+                    Home
+                  </Button>
                 </Link>
-                <Link to="/Form">
-                <Button w="full" variant="ghost" onClick={mobileNav.onClose}>
-                  Form
-                </Button>
-                </Link>
-                <Link to="/Signin">
-                <Button w="full" variant="ghost" onClick={mobileNav.onClose}>
-                  Sign in
-                </Button>
-                </Link>
-                <Link to="/Signup">
-                <Button w="full" variant="ghost" onClick={mobileNav.onClose}>
-                  Sign up
-                </Button>
-                </Link>
+                {isAuthenticated && (
+                  <Link to="/Form">
+                    <Button
+                      w="full"
+                      variant="ghost"
+                      onClick={mobileNav.onClose}
+                    >
+                      Form
+                    </Button>
+                  </Link>
+                )}
+                {!isAuthenticated && (
+                  <>
+                    <Link to="/Signin">
+                      <Button
+                        w="full"
+                        variant="ghost"
+                        onClick={mobileNav.onClose}
+                      >
+                        Sign in
+                      </Button>
+                    </Link>
+                    <Link to="/Signup">
+                      <Button
+                        w="full"
+                        variant="ghost"
+                        onClick={mobileNav.onClose}
+                      >
+                        Sign up
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </VStack>
             </Box>
           </HStack>

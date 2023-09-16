@@ -13,6 +13,8 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import {toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signin() {
   const [show, setShow] = React.useState(false);
@@ -37,10 +39,11 @@ function Signin() {
     if (json.success) {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authToken);
+      toast.success("Logged in Successfully");
       console.log(json);
       navigate("/");
     } else {
-      alert("Invalid Credentials");
+      toast.error("Invalid Credentials");
     }
     console.log(json);
   };
@@ -49,7 +52,7 @@ function Signin() {
   };
   return (
     <Center h="90vh">
-      <Container maxW="md">
+      <Container maxW="lg">
         <form onSubmit={handlesubmit}>
           <FormControl isInvalid={isError}>
             <FormLabel>Email</FormLabel>
