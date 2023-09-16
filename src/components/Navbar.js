@@ -74,10 +74,15 @@ const SimpleNavbar = () => {
                   <Link to="/Form">
                     <Button variant="ghost">Form</Button>
                   </Link>
-                  <Button  onClick={()=>{
-                    localStorage.removeItem("token");
-                    window.location.reload();
-                  }} variant="ghost">Logout</Button>
+                  <Button
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      window.location.reload();
+                    }}
+                    variant="ghost"
+                  >
+                    Logout
+                  </Button>
                 </>
               )}
               {!isAuthenticated && (
@@ -156,7 +161,16 @@ const SimpleNavbar = () => {
                   </Button>
                 </Link>
                 {isAuthenticated && (
-                  <Link to="/Form">
+                  <>
+                    <Link to="/Form">
+                      <Button
+                        w="full"
+                        variant="ghost"
+                        onClick={mobileNav.onClose}
+                      >
+                        Form
+                      </Button>
+                    </Link>
                     <Button
                       w="full"
                       variant="ghost"
@@ -164,7 +178,7 @@ const SimpleNavbar = () => {
                     >
                       Form
                     </Button>
-                  </Link>
+                  </>
                 )}
                 {!isAuthenticated && (
                   <>
@@ -188,6 +202,22 @@ const SimpleNavbar = () => {
                     </Link>
                   </>
                 )}
+                <IconButton
+                  backgroundColor={useColorModeValue("gray.900", "gray.100")}
+                  color={useColorModeValue("gray.100", "gray.900")}
+                  onClick={toggleColorMode}
+                  icon={
+                    colorMode === "light" ? (
+                      <Icon as={BiMoon} />
+                    ) : (
+                      <Icon as={BiSun} />
+                    )
+                  }
+                  margin="auto"
+                  w={8}
+                  h={8}
+                  size="lg"
+                  aria-label={"Toggle Dark mode"}/>
               </VStack>
             </Box>
           </HStack>

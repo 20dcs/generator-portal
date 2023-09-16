@@ -46,9 +46,9 @@ function Signup() {
     const json = await response.json();
     // Save the auth token and redirect
     localStorage.setItem("token", json.authToken);
-    toast.success("Logged in Successfully");
+    toast.success("Sign up Successfully");
     console.log(json);
-    navigate("/");
+    navigate("/Signin");
     console.log(json);
   };
   const onChange = (e) => {

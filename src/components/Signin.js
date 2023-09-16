@@ -42,6 +42,7 @@ function Signin() {
       toast.success("Logged in Successfully");
       console.log(json);
       navigate("/");
+      window.location.reload();
     } else {
       toast.error("Invalid Credentials");
     }
