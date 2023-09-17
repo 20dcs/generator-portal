@@ -17,8 +17,13 @@ import {
 import { BiSun, BiMoon } from "react-icons/bi";
 import { useDisclosure } from "@chakra-ui/hooks"; // Import hooks from Chakra UI
 import { AiOutlineMenu } from "react-icons/ai"; // Import the AiOutlineMenu icon
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import { useEffect,useState } from "react";
+
 const SimpleNavbar = () => {
+  const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
@@ -77,7 +82,9 @@ const SimpleNavbar = () => {
                   <Button
                     onClick={() => {
                       localStorage.removeItem("token");
+                      // navigate("/Home")
                       window.location.reload();
+                      toast.success("Logout Successfully");
                     }}
                     variant="ghost"
                   >
@@ -174,9 +181,15 @@ const SimpleNavbar = () => {
                     <Button
                       w="full"
                       variant="ghost"
-                      onClick={mobileNav.onClose}
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        // navigate("/Home")
+                        window.location.reload();
+                        toast.success("Logout Successfully");
+                        mobileNav.onClose();
+                      }}
                     >
-                      Form
+                      Logout
                     </Button>
                   </>
                 )}
@@ -217,7 +230,8 @@ const SimpleNavbar = () => {
                   w={8}
                   h={8}
                   size="lg"
-                  aria-label={"Toggle Dark mode"}/>
+                  aria-label={"Toggle Dark mode"}
+                />
               </VStack>
             </Box>
           </HStack>
