@@ -17,13 +17,14 @@ import {
 import { BiSun, BiMoon } from "react-icons/bi";
 import { useDisclosure } from "@chakra-ui/hooks"; // Import hooks from Chakra UI
 import { AiOutlineMenu } from "react-icons/ai"; // Import the AiOutlineMenu icon
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Link} from "react-router-dom";
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 // import { useEffect,useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 const SimpleNavbar = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
@@ -79,17 +80,9 @@ const SimpleNavbar = () => {
                   <Link to="/Form">
                     <Button variant="ghost">Form</Button>
                   </Link>
-                  <Button
-                    onClick={() => {
-                      localStorage.removeItem("token");
-                      // navigate("/Home")
-                      window.location.reload();
-                      toast.success("Logout Successfully");
-                    }}
-                    variant="ghost"
-                  >
-                    Logout
-                  </Button>
+                  <Link to="Profile">
+                    <Button variant="ghost">Profile</Button>
+                  </Link>
                 </>
               )}
               {!isAuthenticated && (
@@ -178,19 +171,17 @@ const SimpleNavbar = () => {
                         Form
                       </Button>
                     </Link>
+                    <Link to="/Profile">
                     <Button
                       w="full"
                       variant="ghost"
                       onClick={() => {
-                        localStorage.removeItem("token");
-                        // navigate("/Home")
-                        window.location.reload();
-                        toast.success("Logout Successfully");
                         mobileNav.onClose();
                       }}
                     >
-                      Logout
+                      Profile
                     </Button>
+                    </Link>
                   </>
                 )}
                 {!isAuthenticated && (

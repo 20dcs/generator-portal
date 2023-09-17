@@ -6,14 +6,14 @@ import {
   Navigate,
   Route,
   Routes,
-  redirect,
 } from "react-router-dom";
 import Home from "./components/Home";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import SimpleNavbar from "./components/Navbar";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Profile from "./components/Profile";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token") ? true : false;
@@ -35,6 +35,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
+            <Route
+              path="/Profile"
+              element={isAuthenticated ? <Profile /> : <Navigate to="/Signin" />}
+            />
             <Route
               path="/Form"
               element={isAuthenticated ? <Form /> : <Navigate to="/Signin" />}

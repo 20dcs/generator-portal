@@ -15,7 +15,7 @@ import {
   Text,
   Heading,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ function Signin() {
   const handleClick = () => setShow(!show);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const isError = credentials.email === "";
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handlesubmit = async (e) => {
     e.preventDefault();
