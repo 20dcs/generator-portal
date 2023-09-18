@@ -222,15 +222,24 @@ const Form = () => {
       duration: 3000,
       isClosable: true,
     });
-    const newPerson = { userName: values.name, data: updatedData };
+    const newPerson = {data: updatedData };
 
     console.log("newPerson", newPerson);
-    await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/add`, {
+    await fetch("https://profolio-backend-7ugb.onrender.com/api/userdata/adddata", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify(newPerson),
+      body: JSON.stringify({
+        Color: newPerson.data.Color,
+        Head: newPerson.data.Head,
+        HomePage: newPerson.data.HomePage,
+        AboutPage: newPerson.data.AboutPage,
+        Skills: newPerson.data.Skills,
+        Projects: newPerson.data.Projects,
+        Contact: newPerson.data.Contact,
+      }),
     }).catch((error) => {
       window.alert(error);
       return;
