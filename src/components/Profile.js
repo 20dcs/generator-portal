@@ -20,7 +20,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetch(
-        "https://profolio-backend-7ugb.onrender.com/api/auth/getuser/",
+        `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser/`,
         {
           method: "POST",
           headers: {

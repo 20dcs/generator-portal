@@ -7,7 +7,7 @@ const Getjson = () => {
   useEffect(() => {
     // Define the URL of the API
     const apiUrl =
-      "https://profolio-backend-7ugb.onrender.com/api/userdata/getdata";
+    `${process.env.REACT_APP_BACKEND_URL}/api/userdata/getdata`;
 
     // Define the headers, including the auth-token
     const headers = {

@@ -225,7 +225,7 @@ const Form = () => {
     const newPerson = {data: updatedData };
 
     console.log("newPerson", newPerson);
-    await fetch("https://profolio-backend-7ugb.onrender.com/api/userdata/adddata", {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/userdata/adddata`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

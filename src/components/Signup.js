@@ -35,7 +35,8 @@ function Signup() {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://profolio-backend-7ugb.onrender.com/api/auth/createuser", {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/auth/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,7 +102,7 @@ function Signup() {
               />
               {!isError ? (
                 <FormHelperText>
-                  Enter your registered Profolio email to sign in
+                  Enter a valid email to sign up
                 </FormHelperText>
               ) : (
                 <FormErrorMessage>Email is required.</FormErrorMessage>
