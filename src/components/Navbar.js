@@ -62,9 +62,9 @@ const SimpleNavbar = () => {
               </Text>
             </chakra.h1>
           </Flex>
-          <HStack display="flex" alignItems="center" spacing={1}>
+          <HStack display="flex" alignItems="center" spacing={4}>
             <HStack
-              spacing={1}
+              spacing={4}
               mr={1}
               color="brand.500"
               display={{
@@ -73,12 +73,12 @@ const SimpleNavbar = () => {
               }}
             >
               <Link to="/Home">
-                <Button variant="ghost">Home</Button>
+                <Button variant="ghost">Instructions</Button>
               </Link>
               {isAuthenticated && (
                 <>
                   <Link to="/Form">
-                    <Button variant="ghost">Form</Button>
+                    <Button variant="ghost">Create Profolio</Button>
                   </Link>
                   <Link to="Profile">
                     <Button variant="ghost">Profile</Button>

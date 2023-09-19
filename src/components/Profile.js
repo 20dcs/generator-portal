@@ -9,6 +9,7 @@ import {
   Button,
   Center,
   Spinner,
+  Box,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -80,6 +81,9 @@ const Profile = () => {
       ) : (
         <Center my={20}>
           <Spinner size="xl" />
+          <Box ml={3}>
+            <Text fontSize="xl">Loading...</Text>
+          </Box>
         </Center>
       )}
     </div>
