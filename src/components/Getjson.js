@@ -1,11 +1,9 @@
 import {
   Box,
   Button,
-  Card,
   Center,
   Code,
   Grid,
-  Heading,
   Spinner,
   useClipboard,
   Text,

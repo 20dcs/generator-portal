@@ -96,6 +96,8 @@ const Project = ({ register, errors, technologies, control, id }) => {
             }) => (
               <FormControl textColor="black" width='64vh' isInvalid={!!error} id={`project${id}`}>
                 <CreatableSelect
+                  menuPortalTarget={document.body}
+                  classNamePrefix="chakra-react-select"
                   isMulti
                   name={name}
                   ref={ref}
@@ -128,7 +130,9 @@ const Project = ({ register, errors, technologies, control, id }) => {
                 isInvalid={!!error}
                 id={`projectStatus${id}`}>
                 <Select
-                zIndex={1}
+                  menuPortalTarget={document.body}
+                  classNamePrefix="chakra-react-select"
+                  zIndex={1000}
                   name={name}
                   ref={ref}
                   onChange={onChange}

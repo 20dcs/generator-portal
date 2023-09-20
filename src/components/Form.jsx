@@ -424,6 +424,8 @@ const Form = () => {
                     id={"skills"}
                   >
                     <CreatableSelect
+                      menuPortalTarget={document.body}
+                      classNamePrefix="chakra-react-select"
                       isMulti
                       name={name}
                       ref={ref}
