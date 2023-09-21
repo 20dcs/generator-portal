@@ -15,28 +15,28 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Getjson from "./Getjson";
 
-const Profile = () => {
-  const [user, setUser] = useState(null);
+const Profile = ({user,data}) => {
+  // const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser/`,
-        {
-          method: "POST",
-          headers: {
-            "auth-token": localStorage.getItem("token"),
-          },
-        }
-      );
-      const json = await response.json();
-      setUser(json);
-      console.log("success");
-      console.log(json);
-    };
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const response = await fetch(
+  //       `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser/`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "auth-token": localStorage.getItem("token"),
+  //         },
+  //       }
+  //     );
+  //     const json = await response.json();
+  //     setUser(json);
+  //     console.log("success");
+  //     console.log(json);
+  //   };
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
 
   return (
     <div>
@@ -75,7 +75,7 @@ const Profile = () => {
             </Card>
           </Center>
           <Center>
-            <Getjson />
+            <Getjson data={data} />
           </Center>
         </>
       ) : (

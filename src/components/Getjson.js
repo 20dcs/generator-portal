@@ -10,37 +10,37 @@ import {
 } from '@chakra-ui/react';
 import { useState, useEffect, React } from 'react';
 
-const Getjson = () => {
+const Getjson = ({data}) => {
   const { onCopy, setValue, hasCopied } = useClipboard('');
 
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    // Define the URL of the API
-    const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/api/userdata/getdata`;
+  // useEffect(() => {
+  //   // Define the URL of the API
+  //   const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/api/userdata/getdata`;
 
-    // Define the headers, including the auth-token
-    const headers = {
-      //   'Content-Type': 'application/json',
-      'auth-token': localStorage.getItem('token'), // Replace with your actual auth-token
-    };
+  //   // Define the headers, including the auth-token
+  //   const headers = {
+  //     //   'Content-Type': 'application/json',
+  //     'auth-token': localStorage.getItem('token'), // Replace with your actual auth-token
+  //   };
 
-    // Fetch data from the API
-    fetch(apiUrl, { headers })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setData(data); // Set the retrieved data in state
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  //   // Fetch data from the API
+  //   fetch(apiUrl, { headers })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setData(data); // Set the retrieved data in state
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching data:', error);
+  //     });
+  // }, []);
   return (
     <div>
       {data ? (
