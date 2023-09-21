@@ -18,8 +18,7 @@ import {
 // import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
-
+import { Link} from "react-router-dom";
 function Signin() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -50,9 +49,9 @@ function Signin() {
       window.location.reload();
       toast.success("Logged in Successfully");
     } else {
-      toast.error("Invalid Credentials");
+      toast.error(`${json.error}`);
     }
-    console.log(json);
+    // console.log(json);
   };
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
