@@ -29,7 +29,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             id={`projectTitle${id}`}
             name={`projectTitle${id}`}
             {...register(`projectTitle${id}`, {
-              // required: 'This is required',
+              required: 'This is required',
             })}
             isInvalid={errors[`projectTitle${id}`] ? true : false}
             placeholder='Notes'
@@ -44,7 +44,7 @@ const Project = ({ register, errors, technologies, control, id }) => {
             id={`projectDescription${id}`}
             name={`projectDescription${id}`}
             {...register(`projectDescription${id}`, {
-              // required: 'This is required',
+              required: 'This is required',
             })}
             isInvalid={errors[`projectDescription${id}`] ? true : false}
             placeholder='Lorem ispsum'
@@ -86,15 +86,18 @@ const Project = ({ register, errors, technologies, control, id }) => {
             Skills involved:{' '}
           </Text>
           <Controller
+          zIndex={2}
             control={control}
             name={`project${id}`}
-            // rules={{ required: 'Select Skills' }}
+            rules={{ required: 'Select Skills' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
             }) => (
-              <FormControl width='64vh' isInvalid={!!error} id={`project${id}`}>
+              <FormControl textColor="black" width='64vh' isInvalid={!!error} id={`project${id}`}>
                 <CreatableSelect
+                  menuPortalTarget={document.body}
+                  classNamePrefix="chakra-react-select"
                   isMulti
                   name={name}
                   ref={ref}
@@ -110,22 +113,26 @@ const Project = ({ register, errors, technologies, control, id }) => {
           />
         </InputGroup>
         <InputGroup width='90vh'>
-          <Text fontWeight={'bold'} display='block' width='26vh'>
+          <Text fontWeight={'bold'} display='block' width='26vh' >
             Status:{' '}
           </Text>
           <Controller
             control={control}
             name={`projectStatus${id}`}
-            // rules={{ required: 'Project Status required' }}
+            rules={{ required: 'Project Status required' }}
             render={({
               field: { onChange, onBlur, value, name, ref },
               fieldState: { error },
             }) => (
               <FormControl
+              textColor="black"
                 width='36%'
                 isInvalid={!!error}
                 id={`projectStatus${id}`}>
                 <Select
+                  menuPortalTarget={document.body}
+                  classNamePrefix="chakra-react-select"
+                  zIndex={1000}
                   name={name}
                   ref={ref}
                   onChange={onChange}

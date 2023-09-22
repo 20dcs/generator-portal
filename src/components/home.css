@@ -1,0 +1,28 @@
+body {
+    background-color: aliceblue;
+    font-family: 'Poppins',Arial, sans-serif;
+  }
+  h1 {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  p {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
