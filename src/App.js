@@ -21,6 +21,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [data, setData] = useState(null);
 
+
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetch(
@@ -35,11 +36,11 @@ function App() {
       const json = await response.json();
       setUser(json);
       console.log("success");
-      console.log(json);
+      console.log(user);
     };
 
     fetchUser();
-  }, []);
+  },[]);
 
   
 
@@ -68,7 +69,7 @@ function App() {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  },[]);
   return (
     <BrowserRouter>
       <ToastContainer />
@@ -93,7 +94,7 @@ function App() {
             />
             <Route
               path="/Form"
-              element={isAuthenticated ? <Form /> : <Navigate to="/Signin" />}
+              element={isAuthenticated ? <Form user={user} jsonObj={data} /> : <Navigate to="/Signin" />}
             />
             <Route
               path="/Signin"

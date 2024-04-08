@@ -14,7 +14,8 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Getjson from "./Getjson";
-
+import { NavLink } from "react-router-dom";
+const url=process.env.REACT_APP_HOSTED_URL_LINK;
 const Profile = ({user,data}) => {
   // const [user, setUser] = useState(null);
 
@@ -43,7 +44,7 @@ const Profile = ({user,data}) => {
       {user ? (
         <>
           <Center>
-            <Card my={10} width="xl" align="center">
+            <Card my={10} width="2xl" align="center">
               <Heading
                 fontFamily="'Poppins', sans-serif;"
                 textAlign="center"
@@ -58,6 +59,14 @@ const Profile = ({user,data}) => {
               </CardHeader>
               <CardBody>
                 <Text fontSize="xl">Email: {user.email}</Text>
+              </CardBody>
+              <CardBody>
+                <Text fontSize="xl">Id: {user._id}</Text>
+              </CardBody>
+              <CardBody>
+              <NavLink target="_blank" to={`${url}/${user._id}`}>
+                <Text fontSize="xl" sx={{color:"blue"}}>Portfolio Link: {url}/{user._id}</Text>
+                </NavLink>
               </CardBody>
               <CardFooter>
                 <Button

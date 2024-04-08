@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 import Project from "./Project";
-
+import { NavLink } from "react-router-dom";
 import {
   ChakraProvider,
   Text,
@@ -35,7 +35,7 @@ import { EditIcon } from "@chakra-ui/icons";
 //   "Twitter": "https://twitter.com/johndoe",
 //   "LinkedIn": "https://linkedin.com/johndoe"
 // }
-const Form = () => {
+const Form = ({user,jsonObj}) => {const url=process.env.REACT_APP_HOSTED_URL_LINK;
   // const { colorMode, toggleColorMode } = useColorMode();
   const [socialPlatforms, setSocialPlatforms] = useState({ Email: "" });
   const [colorPicker, setColorPicker] = useState({
@@ -567,9 +567,28 @@ const Form = () => {
             >
               Submit
             </Button>
+            {(jsonObj.length !== 0) && <NavLink style={{display: "flex"}} to={`${process.env.REACT_HOSTED_URL_LINK}/${user?._id}`} target="_blank">
+            <Button
+              width={200}
+              marginX={"auto"}
+              marginTop={2}
+              bgColor={"#38A169"}
+              color={"white"}
+              // isLoading={isSubmitting}
+              borderRadius={"6px"}
+              _hover={{
+                color: "#000000",
+                bgColor: "#5DB7F4",
+              }}
+              
+            >
+              Open Portfolio
+            </Button>
+            </NavLink>}
           </Grid>
         </FormControl>
       </form>
+      
       {data && (
         <Grid
           paddingBottom={"4vh"}
