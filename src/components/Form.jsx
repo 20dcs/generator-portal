@@ -567,7 +567,7 @@ const Form = ({user,jsonObj}) => {const url=process.env.REACT_APP_HOSTED_URL_LIN
             >
               Submit
             </Button>
-            {(jsonObj.length !== 0) && <NavLink style={{display: "flex"}} to={`${process.env.REACT_HOSTED_URL_LINK}/${user?._id}`} target="_blank">
+            {(jsonObj.length !== 0) && <NavLink style={{display: "flex"}} to={`${url}/${user._id}`} target="_blank">
             <Button
               width={200}
               marginX={"auto"}
