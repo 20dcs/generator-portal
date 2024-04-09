@@ -35,7 +35,8 @@ import { EditIcon } from "@chakra-ui/icons";
 //   "Twitter": "https://twitter.com/johndoe",
 //   "LinkedIn": "https://linkedin.com/johndoe"
 // }
-const Form = ({user,jsonObj}) => {const url=process.env.REACT_APP_HOSTED_URL_LINK;
+const Form = ({user,jsonObj}) => {
+  const hostedUrl=process.env.REACT_APP_HOSTED_URL_LINK;
   // const { colorMode, toggleColorMode } = useColorMode();
   const [socialPlatforms, setSocialPlatforms] = useState({ Email: "" });
   const [colorPicker, setColorPicker] = useState({
@@ -567,7 +568,7 @@ const Form = ({user,jsonObj}) => {const url=process.env.REACT_APP_HOSTED_URL_LIN
             >
               Submit
             </Button>
-            {(jsonObj.length !== 0) && <NavLink style={{display: "flex"}} to={`${url}/${user._id}`} target="_blank">
+            {(jsonObj.length !== 0) && <NavLink target="_blank" style={{display: "flex"}} to={`${hostedUrl}/${user._id}`} >
             <Button
               width={200}
               marginX={"auto"}
