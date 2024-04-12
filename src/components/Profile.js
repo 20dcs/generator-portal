@@ -57,6 +57,9 @@ const Profile = ({user,data}) => {
               <CardHeader>
                 <Heading size="md"> Name: {user.name}</Heading>
               </CardHeader>
+              <CardHeader>
+                <Heading size="md"> Username: {user.username}</Heading>
+              </CardHeader>
               <CardBody>
                 <Text fontSize="xl">Email: {user.email}</Text>
               </CardBody>

@@ -25,6 +25,7 @@ function Signup() {
   // const handleClick = () => setShow(!show);
   const [credentials, setCredentials] = useState({
     name: "",
+    username:"",
     email: "",
     password: "",
     cpassword: "",
@@ -43,6 +44,7 @@ function Signup() {
       },
       body: JSON.stringify({
         name: credentials.name,
+        username: credentials.username,
         email: credentials.email,
         password: credentials.password,
       }),
@@ -85,12 +87,29 @@ function Signup() {
                   id="name"
                   value={credentials.name}
                   onChange={onChange}
+                  placeholder="John Doe"
                 />
               </InputGroup>
               {!isError ? (
                 <></>
               ) : (
                 <FormErrorMessage>Name is required.</FormErrorMessage>
+              )}
+              <FormLabel my={3}>Username</FormLabel>
+              <Input
+                type="username"
+                id="username"
+                name="username"
+                value={credentials.username}
+                onChange={onChange}
+                placeholder="ex. johndoe32"
+              />
+              {!isError ? (
+                <FormHelperText>
+                  Enter a valid email to sign up
+                </FormHelperText>
+              ) : (
+                <FormErrorMessage>username is required.</FormErrorMessage>
               )}
               <FormLabel my={3}>Email</FormLabel>
               <Input
@@ -99,6 +118,7 @@ function Signup() {
                 name="email"
                 value={credentials.email}
                 onChange={onChange}
+                placeholder="ex. johndoe3202@gmail.com"
               />
               {!isError ? (
                 <FormHelperText>
