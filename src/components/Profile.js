@@ -17,28 +17,6 @@ import Getjson from "./Getjson";
 import { NavLink } from "react-router-dom";
 const url=process.env.REACT_APP_HOSTED_URL_LINK;
 const Profile = ({user,data}) => {
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const response = await fetch(
-  //       `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser/`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "auth-token": localStorage.getItem("token"),
-  //         },
-  //       }
-  //     );
-  //     const json = await response.json();
-  //     setUser(json);
-  //     console.log("success");
-  //     console.log(json);
-  //   };
-
-  //   fetchUser();
-  // }, []);
-
   return (
     <div>
       {user ? (
@@ -57,15 +35,18 @@ const Profile = ({user,data}) => {
               <CardHeader>
                 <Heading size="md"> Name: {user.name}</Heading>
               </CardHeader>
+              <CardHeader>
+                <Heading size="md"> Username: {user.username}</Heading>
+              </CardHeader>
               <CardBody>
                 <Text fontSize="xl">Email: {user.email}</Text>
               </CardBody>
-              <CardBody>
+              {/* <CardBody>
                 <Text fontSize="xl">Id: {user._id}</Text>
-              </CardBody>
+              </CardBody> */}
               <CardBody>
-              <NavLink target="_blank" to={`${url}/${user._id}`}>
-                <Text fontSize="xl" sx={{color:"blue"}}>Portfolio Link: {url}/{user._id}</Text>
+              <NavLink target="_blank" to={`${url}/${user.username}`}>
+                <Text fontSize="xl" sx={{color:"blue"}}>Portfolio Link: {url}/{user.username}</Text>
                 </NavLink>
               </CardBody>
               <CardFooter>
