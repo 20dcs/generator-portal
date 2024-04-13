@@ -568,7 +568,7 @@ const Form = ({user,jsonObj}) => {
             >
               Submit
             </Button>
-            {(jsonObj.length !== 0) && <NavLink target="_blank" style={{display: "flex"}} to={`${hostedUrl}/${user.username}`} >
+            {(jsonObj?.length !== 0) && <NavLink target="_blank" style={{display: "flex"}} to={`${hostedUrl}/${user.username}`} >
             <Button
               width={200}
               marginX={"auto"}
